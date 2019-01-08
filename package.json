@@ -1,0 +1,56 @@
+{
+  "name": "zxni-boilerplate",
+  "version": "1.0.0",
+  "description": "A light foundation for your next frontend project based on webpack.",
+  "scripts": {
+    "build": "webpack --config webpack/webpack.config.prod.js  --colors",
+    "dev": "webpack-dev-server --open --config webpack/webpack.config.dev.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wbkd/webpack-starter.git"
+  },
+  "keywords": [
+    "webpack",
+    "startkit",
+    "frontend",
+    "es6",
+    "javascript",
+    "webdev"
+  ],
+  "author": "zxni",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-loader": "^8.0.4",
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.4",
+    "css-loader": "^1.0.0",
+    "eslint": "^5.7.0",
+    "eslint-loader": "^2.1.1",
+    "file-loader": "^2.0.0",
+    "html-webpack-plugin": "^4.0.0-beta.2",
+    "mini-css-extract-plugin": "^0.4.4",
+    "node-sass": "^4.9.4",
+    "resolve-url-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.21.0",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.9",
+    "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0",
+    "animejs": "^2.2.0",
+    "lodash-es": "^4.17.11",
+    "pjax": "*",
+    "svg4everybody": "*",
+    "smooth-scrollbar": "git+https://git@github.com/locomotivemtl/smooth-scrollbar.git#develop"
+  }
+}
