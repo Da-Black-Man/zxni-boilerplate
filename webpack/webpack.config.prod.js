@@ -17,8 +17,8 @@ module.exports = merge(common, {
   //   }
   },
   output: {
-    filename: 'assets/js/[name].js',
-    chunkFilename: 'assets/js/[name].js'
+    filename: 'assets/scripts/[name].js',
+    chunkFilename: 'assets/scripts/[name].js'
   },
   plugins: [
     new Webpack.DefinePlugin({

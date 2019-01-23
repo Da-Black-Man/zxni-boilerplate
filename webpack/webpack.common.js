@@ -11,7 +11,7 @@ module.exports = {
   },
   output: {
     path: Path.join(__dirname, '../build'),
-    filename: 'js/[name].js'
+    filename: 'scripts/[name].js'
   },
   optimization: {
     minimize: true
@@ -31,6 +31,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: Path.resolve(__dirname, '../src/index.html')
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'page.html',
+      template: Path.resolve(__dirname, '../src/page.html')
     }),
     new Webpack.HotModuleReplacementPlugin(),
   ],
