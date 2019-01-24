@@ -1,35 +1,67 @@
-@charset 'UTF-8';
+// ==========================================================================
+// Main
+// ==========================================================================
 
-// 1. Configuration and helpers
-@import
-  'abstracts/variables',
-  'abstracts/functions',
-  'abstracts/mixins';
+// Settings
+// ==========================================================================
+@import "settings/config.colors";
+@import "settings/config";
 
-// 2. Vendors
-@import
-  'vendors/normalize';
+// ==========================================================================
+// Tools
+// ==========================================================================
+@import "tools/functions";
+@import "tools/mixins";
+@import "tools/fonts";
+@import "tools/layout";
+// @import "tools/ratio";
+// @import "tools/widths";
+// @import "tools/familly";
 
-// 3. Base stuff
-@import
-  'base/base',
-  'base/fonts',
-  'base/typography',
-  'base/helpers';
+// Generic
+// ==========================================================================
+@import "generic/normalize";
+@import "generic/generic";
+@import "generic/media";
+@import "generic/form";
+@import "generic/button";
 
-// 4. Layout-related sections
-@import
-  'layout/header',
-  'layout/footer';
+// Base
+// ==========================================================================
+@import "base/fonts";
+@import "base/page";
+@import "base/headings";
 
-// 5. Components
-@import
-  'components/button';
+// Objects
+// ==========================================================================
+@import "objects/container";
+// @import "objects/crop";
+// @import "objects/ratio";
+// @import "objects/table";
+@import "objects/layout";
+@import "objects/form";
+@import "objects/button";
+@import "objects/pjax";
+@import "objects/scroll";
 
-// 6. Page-specific styles
-@import
-  'pages/home';
+// Vendors
+// ==========================================================================
+// @import "vendors/vendor";
 
-// 7. Themes
-@import
-  'themes/default';
+// Components
+// ==========================================================================
+// @import "components/component";
+
+// Templates
+// ==========================================================================
+// @import "templates/template";
+
+// Utilities
+// ==========================================================================
+// @import "utilities/align";
+// @import "utilities/helpers";
+// @import "utilities/states";
+// @import "utilities/headings";
+// @import "utilities/spacing";
+// @import "utilities/widths";
+// @import "utilities/print";
