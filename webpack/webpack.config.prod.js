@@ -9,16 +9,9 @@ module.exports = merge(common, {
   //devtool: 'source-map',
   stats: 'errors-only',
   bail: true,
-  optimization: {
-    minimize: false
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     name: false
-  //   }
-  },
   output: {
-    filename: 'assets/scripts/[name].js',
-    chunkFilename: 'assets/scripts/[name].js'
+    filename: 'scripts/[name].js',
+    chunkFilename: 'scripts/vendor.js'
   },
   plugins: [
     new Webpack.DefinePlugin({

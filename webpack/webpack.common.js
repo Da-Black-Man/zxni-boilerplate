@@ -2,8 +2,6 @@ const Path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Webpack = require('webpack');
-
 
 module.exports = {
   entry: {
@@ -14,11 +12,11 @@ module.exports = {
     filename: 'scripts/[name].js'
   },
   optimization: {
-    minimize: true
-  //   splitChunks: {
-  //     chunks: 'all',
-  //     name: false
-  //   }
+    minimize: true,
+    splitChunks: {
+      chunks: 'all',
+      name: false
+    }
   },
   plugins: [
     new CleanWebpackPlugin(['build'], {
@@ -35,13 +33,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'page.html',
       template: Path.resolve(__dirname, '../src/page.html')
-    }),
-    new Webpack.HotModuleReplacementPlugin(),
+    })
   ],
   resolve: {
-    // alias: {
-    //   '~': Path.resolve(__dirname, '../src')
-    // }
+    alias: {
+      '~': Path.resolve(__dirname, '../src')
+    }
   },
   module: {
     rules: [{

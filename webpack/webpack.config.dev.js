@@ -7,7 +7,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'cheap-eval-source-map',
   output: {
-    chunkFilename: 'scripts/[name].chunk.js'
+    chunkFilename: 'scripts/vendor.js'
   },
   module: {
     rules: [{
@@ -38,7 +38,8 @@ module.exports = merge(common, {
   plugins: [
     new Webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development')
-    })
+    }),
+    new Webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     inline: true,
