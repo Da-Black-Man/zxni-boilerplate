@@ -1,4 +1,4 @@
-import '../assets/styles/main.scss';
+import '../styles/main.scss';
 import { APP_NAME, $document, $pjaxWrapper } from './utils/environment';
 
 import globals from './globals';
