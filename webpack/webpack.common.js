@@ -28,10 +28,12 @@ module.exports = {
     }]),
     new HtmlWebpackPlugin({
       filename: 'index.html',
+      minify:  false,
       template: Path.resolve(__dirname, '../src/index.html')
     }),
     new HtmlWebpackPlugin({
       filename: 'page.html',
+      minify:  false,
       template: Path.resolve(__dirname, '../src/page.html')
     })
   ],
