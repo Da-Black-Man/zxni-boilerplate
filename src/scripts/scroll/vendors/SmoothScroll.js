@@ -242,6 +242,7 @@ export default class extends Scroll {
         }
 
         const scrollbarTop = this.scrollbar.scrollTop;
+        const scrollbarBottom = this.scrollbar.scrollTop + this.windowHeight;
 
         if(this.getWay){
             if (scrollbarTop > this.scroll.y) {
@@ -267,6 +268,10 @@ export default class extends Scroll {
         if (this.scroll.y !== scrollbarTop) {
             this.scroll.y = scrollbarTop;
         }
+
+
+        scrollbarBottom > this.documentHeight - 100 ? $html.addClass('has-scrolled-bottom') : $html.hasClass("has-scrolled-bottom") && $html.removeClass("has-scrolled-bottom");
+        20 < this.scroll.y ? $html.addClass("has-scrolled") : $html.hasClass("has-scrolled") && $html.removeClass("has-scrolled");
 
         this.transformElements(isFirstCall);
         this.animateElements();
