@@ -1,3 +1,4 @@
+import 'normalize.css';
 import '../styles/main.scss';
 import { APP_NAME, $document, $pjaxWrapper } from './utils/environment';
 
@@ -72,7 +73,7 @@ class App {
             if (destroyAll || arrayContains(moduleIds, this.currentModules[i].uid)) {
                 removeFromArray(moduleIds, this.currentModules[i].uid);
                 this.currentModules[i].destroy();
-                this.currentModules.splice(i);
+                this.currentModules.splice(i, 1);
             }
         }
 

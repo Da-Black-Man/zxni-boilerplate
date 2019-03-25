@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "animejs": "^2.2.0",
+    "normalize.css": "*",
     "lodash-es": "^4.17.11",
     "pjax": "*",
     "svg4everybody": "*",
