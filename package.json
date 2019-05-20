@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
-    "corejs": "3.0.1",
+    "core-js": "3.0.1",
     "normalize.css": "*",
     "lodash-es": "^4.17.11",
     "pjax": "*",
