@@ -34,6 +34,18 @@ module.exports = merge(common, {
         use : [
           MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { url: false, sourceMap: true } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [
+                  require('autoprefixer')({
+                    browsers: ['> 5%']
+                  })
+                ];
+              }
+            }
+          },
           { loader: 'sass-loader', options: { sourceMap: true } }
         ]
       }

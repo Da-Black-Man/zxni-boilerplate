@@ -27,7 +27,21 @@ module.exports = merge(common, {
       },
       {
         test: /\.scss$/i,
-        use: ['style-loader', 'css-loader?url=false', 'sass-loader?sourcMap']
+        use: [
+          'style-loader',
+          'css-loader?url=false',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [
+                  require('autoprefixer')
+                ];
+              }
+            }
+          },
+          'sass-loader?sourcMap'
+        ]
       },
       {
         test: /\.css$/,
