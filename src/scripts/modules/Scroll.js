@@ -14,7 +14,7 @@ export default class extends module {
             selector: '.js-animate',
             smooth: true,
             smoothMobile: true,
-            mobileContainer: $(document),
+            mobileContainer: $(this.el),
             getDirection: true,
             getSpeed: true,
             inertia: 1,

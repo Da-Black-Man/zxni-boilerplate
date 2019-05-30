@@ -19,7 +19,6 @@ export default class extends Scroll {
     constructor(options) {
         super(options);
 
-        this.sectionsSelector = (options.sections) ? document.querySelectorAll(options.sections) : document.querySelectorAll(DEFAULTS.sections);
         this.isReversed = options.reversed || DEFAULTS.reversed;
         this.getDirection = options.getDirection || DEFAULTS.getDirection;
         this.getSpeed = options.getSpeed || DEFAULTS.getSpeed;
@@ -51,12 +50,12 @@ export default class extends Scroll {
             x: 0,
             y: 0,
             direction: null
-        };
+        }
 
         this.instance.delta = {
             x: 0,
             y: 0
-        };
+        }
 
         if(this.getSpeed) {
             this.instance.scroll.speed = 0;
@@ -64,6 +63,9 @@ export default class extends Scroll {
 
         // @todo : to optimize
         this.instance.on((e) => {
+            if (this.stop) {
+                return;
+            }
 
             if(!this.isDraggingScrollBar) {
                 this.instance.delta.y -= e.deltaY;
@@ -78,7 +80,6 @@ export default class extends Scroll {
         this.setScrollLimit();
         this.initScrollBar();
 
-        this.addSections();
         this.addElements();
 
         this.events();
@@ -123,15 +124,25 @@ export default class extends Scroll {
         });
 
         // Resize event
-        $window.on(EVENT.RESIZE, debounce(() => {
-            this.update();
-        },600));
+        $window.on(EVENT.RESIZE,() => {
+            this.update()
+        });
+
+        // Stop event
+        this.$container.on(EVENT.STOP, () => {
+            this.stop = true;
+        });
+
+        // Start event
+        this.$container.on(EVENT.START, () => {
+            this.stop = false;
+        });
     }
 
     initScrollBar() {
         this.scrollbarWrapper = document.createElement('span');
         this.scrollbar = document.createElement('span');
-        this.scrollbarWrapper.classList.add(`${this.scrollBarClassName}__wrapper`);
+        this.scrollbarWrapper.classList.add(`${this.scrollBarClassName}_wrapper`);
         this.scrollbar.classList.add(`${this.scrollBarClassName}`);
 
         this.scrollbarWrapper.append(this.scrollbar);
@@ -182,47 +193,6 @@ export default class extends Scroll {
     }
 
     /**
-     * Reset existing sections and find all sections.
-     * Called on page load and any subsequent updates.
-     */
-
-    addSections() {
-        this.sections = [];
-
-        for (let i = 0 ; i < this.sectionsSelector.length; i ++) {
-            let sectionElement = this.sectionsSelector[i];
-            let offset = sectionElement.getBoundingClientRect().top - (window.innerHeight * 1.5) - this.getTranslate(sectionElement).y;
-            let limit = offset + sectionElement.getBoundingClientRect().height + (window.innerHeight * 2);
-
-            let inView = false;
-            for (let i = this.sections.length - 1; i >= 0; i--) {
-                if(this.instance.scroll.y > offset && this.instance.scroll.y < limit) {
-                    inView = true;
-                }
-            }
-
-            const section = {
-                element: sectionElement,
-                offset: offset,
-                limit: limit,
-                inView: inView
-            };
-
-            this.sections.push(section);
-
-            if(i === 2) {
-                let debug = {
-                    offset: sectionElement.getBoundingClientRect().top - (window.innerHeight * 1.5),
-                    scrollValue: parseInt(this.instance.scroll.y),
-                    limit: limit,
-                    final: offset
-                };
-            }
-        }
-
-    }
-
-    /**
      * Reset existing elements and find all animatable elements.
      * Called on page load and any subsequent updates.
      */
@@ -230,135 +200,128 @@ export default class extends Scroll {
         this.animatedElements = [];
         this.parallaxElements = [];
 
+        const $elements = $(this.selector);
+        const len = $elements.length;
+        let i = 0;
 
-        for (let y = 0 ; y < this.sections.length; y ++) {
+        for (; i < len; i ++) {
+            let $element = $elements.eq(i);
+            let elementSpeed = $element.attr('data-speed') ? $element.attr('data-speed') / 10 : false;
+            let elementPosition = $element.attr('data-position');
+            let elementTarget = $element.attr('data-target');
+            let elementHorizontal = (typeof $element.attr('data-horizontal') === 'string');
+            let elementSticky = (typeof $element.attr('data-sticky') === 'string');
+            let elementStickyTarget = $element.attr('data-sticky-target');
+            let $target = (elementTarget && $(elementTarget).length) ? $(elementTarget) : $element;
+            let elementOffset = $target.offset().top + this.instance.scroll.y;
+            let elementLimit = elementOffset + $target.outerHeight();
 
-            const elements = document.querySelectorAll(this.selector, this.sections[y].element);
-            const len = elements.length;
 
-            for (let i = 0 ; i < elements.length; i ++) {
-                let element = elements[i];
-                let elementSpeed = element.getAttribute('data-speed') ? element.getAttribute('data-speed') / 10 : false;
-                let elementPosition = element.getAttribute('data-position');
-                let elementTarget = element.getAttribute('data-target');
-                let elementHorizontal = (typeof element.getAttribute('data-horizontal') === 'string');
-                let elementSticky = (typeof element.getAttribute('data-sticky') === 'string');
-                let elementStickyTarget = element.getAttribute('data-sticky-target');
-                let target = (elementTarget && document.querySelectorAll(elementTarget).length) ? document.querySelectorAll(elementTarget) : element;
-                let elementOffset;
-                // reset transform to get the real offset
+            let elementViewportOffset = null;
+            if(typeof $element.attr('data-viewport-offset') === 'string') {
+               elementViewportOffset = $element.attr('data-viewport-offset').split(',');
+            }
 
-                if(!this.sections[y].inView) {
-                    elementOffset = parseInt(target.getBoundingClientRect().top - this.getTranslate(this.sections[y].element).y);
+            //Manage callback
+            let elementCallbackString = (typeof $element.attr('data-callback') === 'string') ? $element.attr('data-callback') : null;
+            let elementCallback = null;
+
+            if(elementCallbackString != null){
+                let event = elementCallbackString.substr(0, elementCallbackString.indexOf('('));
+                let optionsString = elementCallbackString.substr(elementCallbackString.indexOf('('),elementCallbackString.length - event.length);
+
+                optionsString = optionsString.replace('(','');
+                optionsString = optionsString.replace(')','');
+
+                let options = optionsString.split('|');
+
+                let obj = {};
+
+                for (var j = 0; j < options.length; j++) {
+
+                    let option = options[j].split(':');
+                    option[0] = option[0].replace(' ','');
+
+                    let val;
+                    //check if value is a boolean
+                    if(option[1] === "true") {
+                        val = true;
+                    }
+                    else if(option[1] === "false") {
+                        val = false;
+                    }
+                    //check if value is numeric
+                    else if(/^\d+$/.test(option[1])) {
+                        val = parseInt(option[1]);
+                    }
+                    //check if value is a String
+                    else {
+                        val = option[1];
+                    }
+                    obj[option[0]] = val;
+                }
+
+                elementCallback = {event:event, options:obj};
+            }
+
+            // If elements stays visible after scrolling past it
+            let elementRepeat = (typeof $element.attr('data-repeat') === 'string');
+
+            let elementInViewClass = $element.attr('data-inview-class');
+            if (typeof elementInViewClass === 'undefined') {
+                elementInViewClass = 'is-show';
+            }
+
+            if (!elementTarget && $element.attr('data-transform')) {
+                elementOffset -= parseFloat($element.attr('data-transform').y);
+                elementLimit = elementOffset + $target.outerHeight();
+            }
+
+            if (elementSticky) {
+                if (typeof elementStickyTarget === 'undefined') {
+                    elementLimit = Infinity;
                 } else {
-                    elementOffset = parseInt(target.getBoundingClientRect().top + this.instance.scroll.y);
-                }
-
-                let elementLimit = elementOffset + target.offsetHeight;
-
-                let elementViewportOffset = null;
-                if(typeof element.getAttribute('data-viewport-offset') === 'string') {
-                   elementViewportOffset = $element.attr('data-viewport-offset').split(',');
-                }
-
-                //Manage callback
-                let elementCallbackString = (typeof element.getAttribute('data-callback') === 'string') ? element.getAttribute('data-callback') : null;
-                let elementCallback = null;
-
-                if(elementCallbackString != null){
-                    let event = elementCallbackString.substr(0, elementCallbackString.indexOf('('));
-                    let optionsString = elementCallbackString.substr(elementCallbackString.indexOf('('),elementCallbackString.length - event.length);
-
-                    optionsString = optionsString.replace('(','');
-                    optionsString = optionsString.replace(')','');
-
-                    let options = optionsString.split('|');
-
-                    let obj = {};
-
-                    for (var j = 0; j < options.length; j++) {
-
-                        let option = options[j].split(':');
-                        option[0] = option[0].replace(' ','');
-
-                        let val;
-                        //check if value is a boolean
-                        if(option[1] === "true") {
-                            val = true;
-                        }
-                        else if(option[1] === "false") {
-                            val = false;
-                        }
-                        //check if value is numeric
-                        else if(/^\d+$/.test(option[1])) {
-                            val = parseInt(option[1]);
-                        }
-                        //check if value is a String
-                        else {
-                            val = option[1];
-                        }
-                        obj[option[0]] = val;
-                    }
-
-                    elementCallback = {event:event, options:obj};
-                }
-
-                // If elements stays visible after scrolling past it
-                let elementRepeat = (typeof element.getAttribute('data-repeat') === 'string');
-
-                let elementInViewClass = (typeof element.getAttribute('data-inview-class') === 'string') ? element.getAttribute('data-inview-class') : 'is-show';
-
-                if (!elementTarget && element.getAttribute('data-transform')) {
-                    elementOffset -= parseInt(JSON.parse(element.getAttribute('data-transform')).y);
-                    elementLimit = elementOffset + target.offsetHeight;
-                }
-
-                if (elementSticky) {
-                    if (typeof elementStickyTarget === 'undefined') {
-                        elementLimit = Infinity;
-                    } else {
-                        elementLimit = $(elementStickyTarget)[0].getBoundingClientRect().top - element.offsetHeight + this.instance.scroll.y;
-                    }
-                }
-
-                const newElement = {
-                    $element: $(element),
-                    inViewClass: elementInViewClass,
-                    limit: elementLimit,
-                    offset: Math.round(elementOffset),
-                    repeat: elementRepeat,
-                    callback: elementCallback,
-                    viewportOffset: elementViewportOffset
-                };
-
-                // For parallax animated elements
-                if (elementSpeed !== false) {
-                    let elementPosition = element.getAttribute('data-position');
-                    let elementHorizontal = (typeof element.getAttribute('data-horizontal') === 'string');
-                    let elementMiddle = ((elementLimit - elementOffset) / 2) + elementOffset;
-                    let elementDelay = element.getAttribute('data-delay');
-
-                    newElement.horizontal = elementHorizontal;
-                    newElement.middle = elementMiddle;
-                    newElement.offset = elementOffset;
-                    newElement.position = elementPosition;
-                    newElement.speed = elementSpeed;
-                    newElement.delay = elementDelay;
-
-                    this.parallaxElements.push(newElement);
-
-                } else {
-                    newElement.sticky = elementSticky;
-
-                    this.animatedElements.push(newElement);
-
-                    if (elementSticky) {
-                        //launch the toggle function to set the position of the sticky element
-                        this.toggleElement(newElement);
-                    }
+                    elementLimit = $(elementStickyTarget).offset().top - $element.height() + this.instance.scroll.y;
                 }
             }
-        }
+
+            const newElement = {
+                $element: $element,
+                inViewClass: elementInViewClass,
+                limit: elementLimit,
+                offset: Math.round(elementOffset),
+                repeat: elementRepeat,
+                callback: elementCallback,
+                viewportOffset: elementViewportOffset
+            };
+
+            // For parallax animated elements
+            if (elementSpeed !== false) {
+                let elementPosition = $element.attr('data-position');
+                let elementHorizontal = (typeof $element.attr('data-horizontal') === 'string');
+                let elementMiddle = ((elementLimit - elementOffset) / 2) + elementOffset;
+                let elementDelay = $element.attr('data-delay');
+
+                newElement.horizontal = elementHorizontal;
+                newElement.middle = elementMiddle;
+                newElement.offset = elementOffset;
+                newElement.position = elementPosition;
+                newElement.speed = elementSpeed
+                newElement.delay = elementDelay;
+
+                this.parallaxElements.push(newElement);
+
+            } else {
+                newElement.sticky = elementSticky;
+
+                this.animatedElements.push(newElement);
+
+                if (elementSticky) {
+                    //launch the toggle function to set the position of the sticky element
+                    this.toggleElement(newElement);
+                }
+            }
+        };
     }
 
     /**
@@ -380,14 +343,14 @@ export default class extends Scroll {
             this.instance.scroll.y = this.lerp(this.instance.scroll.y,this.instance.delta.y, this.inertia * 0.5);
         }
 
-        for (let i = this.sections.length - 1; i >= 0; i--) {
-            if(this.instance.scroll.y > this.sections[i].offset && this.instance.scroll.y < this.sections[i].limit) {
-                this.transform(this.sections[i].element,0,-this.instance.scroll.y);
-                this.sections[i].element.style.visibility = 'visible';
-            } else {
-                this.sections[i].element.style.visibility = 'hidden';
-            }
-        }
+        // console.log(this.isDraggingScrollBar, this.instance.scroll.y);
+
+        // need to move the container
+        this.$container.css({
+            '-webkit-transform': `translate3d(0, ${-this.instance.scroll.y}px, 0)`,
+            '-ms-transform': `translate3d(0, ${-this.instance.scroll.y}px, 0)`,
+            'transform': `translate3d(0, ${-this.instance.scroll.y}px, 0)`
+        });
 
         if(this.getDirection){
             if (this.instance.delta.y > this.instance.scroll.y) {
@@ -418,16 +381,16 @@ export default class extends Scroll {
         this.transformElements(isFirstCall);
         this.animateElements();
 
-        this.callbacks.onScroll(this.instance);
+        this.callbacks.onScroll(this.instance)
         this.timestamp = Date.now();
 
         // scrollbar translation
-        let scrollBarTranslation = (this.instance.scroll.y / this.instance.limit) * this.scrollBarLimit;
-        this.transform(this.scrollbar,0,scrollBarTranslation);
+        let scrollBarTranslation = (this.instance.scroll.y / this.instance.limit) * this.scrollBarLimit
+        this.scrollbar.style.transform = `translate3d(0,${scrollBarTranslation}px,0)`
     }
 
     lerp (start, end, amt){
-        return (1-amt)*start+amt*end;
+        return (1-amt)*start+amt*end
     }
 
     /**
@@ -448,7 +411,7 @@ export default class extends Scroll {
         let offset = 0;
 
         if (typeof $targetElem === 'undefined' && typeof $sourceElem === 'undefined' && typeof targetOffset === 'undefined') {
-            console.warn('You must specify at least one parameter.');
+            console.warn('You must specify at least one parameter.')
             return false;
         }
 
@@ -502,44 +465,44 @@ export default class extends Scroll {
      * @param  {int}     z        Translate value
      * @return {void}
      */
-    transform(element, x, y, delay) {
+    transformElement($element, x, y, z, delay) {
         // Defaults
-        x = parseInt(x*10000)/10000 || 0;
-        y = parseInt(y*10000)/10000 || 0;
+        x = x || 0;
+        y = y || 0;
+        z = z || 0;
 
         if(!delay) {
             // Translate and store the positionning as `data`
-            const transform = `matrix(1,0,0,1,${x},${y})`;
-
-            element.style.webkitTransform = transform;
-            element.style.MozTransform = transform;
-            element.style.msTransform = transform;
-            element.style.OTransform = transform;
-            element.style.transform = transform;
-
-            element.setAttribute('data-transform',`{"x": ${parseInt(x)},"y": ${parseInt(y)}}`);
-
+            $element.css({
+                '-webkit-transform': `translate3d(${x}px, ${y}px, ${z}px)`,
+                '-ms-transform': `translate3d(${x}px, ${y}px, ${z}px)`,
+                'transform': `translate3d(${x}px, ${y}px, ${z}px)`
+            }).data('transform',{
+                x : x,
+                y : y,
+                z : z
+            });
         } else {
 
-            let start = this.getTranslate(element);
+            let start = this.getTranslate($element[0]);
             let lerpY = this.lerp(start.y, y, delay);
             let lerpX = this.lerp(start.x, x, delay);
 
-            const transform = `matrix(1,0,0,1,${lerpX},${lerpY})`;
-
-            element.style.webkitTransform = transform;
-            element.style.MozTransform = transform;
-            element.style.msTransform = transform;
-            element.style.OTransform = transform;
-            element.style.transform = transform;
-
-            element.setAttribute('data-transform',`{"x": ${parseInt(lerpX)},"y": ${parseInt(lerpY)}}`);
+            $element.css({
+                '-webkit-transform': `translate3d(${lerpX}px, ${lerpY}px, ${z}px)`,
+                '-ms-transform': `translate3d(${lerpX}px, ${lerpY}px, ${z}px)`,
+                'transform': `translate3d(${lerpX}px, ${lerpY}px, ${z}px)`
+            }).data('transform',{
+                x : lerpX,
+                y : lerpY,
+                z : z
+            });
         }
 
     }
 
     getTranslate(el){
-        const translate = {};
+        const translate = {}
         if(!window.getComputedStyle) return;
 
         const style = getComputedStyle(el);
@@ -606,8 +569,8 @@ export default class extends Scroll {
                 // Transform horizontal OR vertical. Defaults to vertical
                 if (isNumeric(transformDistance)) {
                     (curEl.horizontal) ?
-                        this.transform(curEl.$element[0], transformDistance,0, curEl.delay) :
-                        this.transform(curEl.$element[0], 0, transformDistance, curEl.delay);
+                        this.transformElement(curEl.$element, transformDistance,0,0, curEl.delay) :
+                        this.transformElement(curEl.$element, 0, transformDistance,0, curEl.delay);
                 }
             }
         }
@@ -621,30 +584,41 @@ export default class extends Scroll {
     update(options) {
         options = options || {};
 
+        // @todo
+        // this.scrollbar.update();
         this.windowHeight = $window.height();
         this.windowMiddle = this.windowHeight / 2;
         this.setScrollLimit();
 
-        this.addSections();
+        // @todo
+        // this.setWheelDirection(this.isReversed);
         this.addElements();
         this.transformElements(true);
         this.reinitScrollBar();
 
     }
 
+    /**
+     * Set smooth-scrollbar scrolling direction for wheel event
+     * @param {Boolean} isReversed
+     */
+    setWheelDirection(isReversed){
+        this.scrollbar.reverseWheel(isReversed);
+    }
+
     preloadImages() {
-        const images = Array.from(document.querySelectorAll('img'));
+        const images = Array.from(document.querySelectorAll('img'))
 
         images.forEach((image) => {
             const img = document.createElement('img');
 
             img.addEventListener('load', () => {
-                images.splice(images.indexOf(image), 1);
-                images.length === 0 && this.update();
+                images.splice(images.indexOf(image), 1)
+                images.length === 0 && this.update()
             });
 
-            img.src = image.getAttribute('src');
-        });
+            img.src = image.getAttribute('src')
+        })
     }
 
     /**
@@ -655,7 +629,6 @@ export default class extends Scroll {
         $html.removeClass('has-smooth-scroll');
         this.parallaxElements = [];
         this.instance.destroy();
-        this.scrollbarWrapper.remove();
 
         cancelAnimationFrame(this.raf);
 
