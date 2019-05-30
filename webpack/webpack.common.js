@@ -20,10 +20,9 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin([{
-      from: Path.resolve(__dirname, '../src/assets'),
-      to: 'assets'
-    }]),
+    new CopyWebpackPlugin([
+        { from: Path.resolve(__dirname, '../src/assets'), to: 'assets' }
+    ]),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       minify:  false,

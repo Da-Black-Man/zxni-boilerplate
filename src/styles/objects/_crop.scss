@@ -32,7 +32,7 @@ $crop-ratios: (
  * 1. Image’s default positioning is top-left in the cropping box.
  * 2. Make sure the media doesn’t stop itself too soon.
  */
-.o-crop_content {
+.o-crop__content {
     position: absolute;
     top: 0; /* [1] */
     left: 0; /* [1] */

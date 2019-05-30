@@ -1,48 +1,54 @@
 <!doctype html>
-<!--[if lte IE 9]>     <html lang="fr" class="has-no-js ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html lang="en" class="has-no-js" data-debug="true">
-  <!--<![endif]-->
+<html class="is-loading" lang="en" data-page="home">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f2f2f2">
-    <title>Page | Boilerplate </title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#f2f2f2">
+        <title>Page | Boilerplate </title>
 
-    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" href="assets/images/favicon.png">
+        <link rel="apple-touch-icon" href="assets/images/favicons/apple-touch-icon.png">
+        <link rel="icon" href="assets/images/favicons/favicon.png">
 
-  </head>
+    </head>
 
-  <body>
+    <body data-module-load>
 
-    <header>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="page.html" data-transition="CustomTransition">Page</a>
-        </li>
-        <li>
-          <a href="page.html" class="no-transition">No transition link</a>
-        </li>
-      </ul>
-    </header>
-        <div id="js-pjax-wrapper">
-            <div class="js-pjax-container" data-template="page" data-transition="pageTransition">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus tempore officia temporibus error rem id, vel perspiciatis eveniet placeat, ducimus fugit vitae sequi, quas deserunt ab eius expedita quia nulla.
-                    
+        <header>
+            <a href="/">
+                <h1>Boilerplate</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" data-load="customTransition">Custom page</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <div data-load-container>
+                <div data-module-scroll>
+
+                    <p>Page</p>
+
+                </div>
             </div>
-        </div>
+        </main>
 
-    
+        <footer>
+            <p>Made with <a href="https://github.com/locomotivemtl/locomotive-boilerplate"
+                    title="Locomotive Boilerplate" target="_blank">🚂</a></p>
+        </footer>
+
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script>
-          window.jQuery || document.write('<script src="scripts/vendors/jquery.min.js"><\/script>')
+            window.jQuery || document.write('<script src="scripts/vendors/jquery.min.js"><\/script>')
+
         </script>
     </body>
+
 </html>

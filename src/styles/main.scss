@@ -14,35 +14,34 @@
 @import "tools/mixins";
 @import "tools/fonts";
 @import "tools/layout";
-// @import "tools/ratio";
-// @import "tools/widths";
-// @import "tools/familly";
+@import "tools/widths";
+// @import "tools/family";
 
 // Generic
 // ==========================================================================
-// @import "generic/normalize"; Normalize V5
+@import "node_modules/normalize.css/normalize";
 @import "generic/generic";
 @import "generic/media";
 @import "generic/form";
 @import "generic/button";
 
-// Base
+// Elements
 // ==========================================================================
-@import "base/fonts";
-@import "base/page";
-@import "base/headings";
+@import "elements/fonts";
+@import "elements/page";
+@import "elements/headings";
 
 // Objects
 // ==========================================================================
 @import "objects/container";
-// @import "objects/crop";
-// @import "objects/ratio";
-// @import "objects/table";
+@import "objects/ratio";
 @import "objects/layout";
 @import "objects/form";
 @import "objects/button";
 @import "objects/pjax";
 @import "objects/scroll";
+// @import "objects/crop";
+// @import "objects/table";
 
 // Vendors
 // ==========================================================================
@@ -58,10 +57,11 @@
 
 // Utilities
 // ==========================================================================
+@import "utilities/ratio";
+@import "utilities/widths";
 // @import "utilities/align";
 // @import "utilities/helpers";
 // @import "utilities/states";
 // @import "utilities/headings";
 // @import "utilities/spacing";
-// @import "utilities/widths";
 // @import "utilities/print";
