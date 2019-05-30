@@ -2,7 +2,7 @@
 // Extended Locomotive Smooth Scroll
 // ==========================================================================
 /* jshint esnext: true */
-import SmoothScroll from './vendors/SmoothScroll'
+import SmoothScroll from './vendors/SmoothScroll';
 
 /**
  * UNCOMMENT ONLY THE LINES YOU NEED
@@ -16,6 +16,6 @@ import SmoothScroll from './vendors/SmoothScroll'
 
 export default class extends SmoothScroll {
     constructor(options) {
-        super(options)
+        super(options);
     }
 }

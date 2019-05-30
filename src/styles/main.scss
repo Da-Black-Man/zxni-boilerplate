@@ -37,7 +37,10 @@
 @import "objects/ratio";
 @import "objects/layout";
 @import "objects/form";
+@import "objects/article";
 @import "objects/button";
+@import "objects/title";
+@import "objects/background";
 @import "objects/pjax";
 @import "objects/scroll";
 // @import "objects/crop";
@@ -53,7 +56,7 @@
 
 // Templates
 // ==========================================================================
-// @import "templates/template";
+@import "templates/demo";
 
 // Utilities
 // ==========================================================================

@@ -2,7 +2,7 @@
 // Extended Locomotive Scroll
 // ==========================================================================
 /* jshint esnext: true */
-import Scroll, { EVENT_KEY as VENDOR_EVENT_KEY, EVENT as VENDOR_EVENTS, DEFAULTS as VENDOR_DEFAULTS } from './vendors/Scroll'
+import Scroll, { EVENT_KEY as VENDOR_EVENT_KEY, EVENT as VENDOR_EVENTS, DEFAULTS as VENDOR_DEFAULTS } from './vendors/Scroll';
 
 /**
  * UNCOMMENT ONLY THE LINES YOU NEED
@@ -21,6 +21,6 @@ export const DEFAULTS = Object.assign(VENDOR_DEFAULTS, { });
 
 export default class extends Scroll {
     constructor(options) {
-        super(options)
+        super(options);
     }
 }

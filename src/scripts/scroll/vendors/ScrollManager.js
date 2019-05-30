@@ -33,7 +33,7 @@ export default class {
                 return new SmoothScroll(this.options);
             } else {
                 if (this.mobileContainer) {
-                    this.options.container = this.mobileContainer
+                    this.options.container = this.mobileContainer;
                 }
                 return new Scroll(this.options);
             }

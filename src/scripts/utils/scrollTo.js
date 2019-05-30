@@ -1,4 +1,4 @@
-import { isNumeric } from './is'
+import { isNumeric } from './is';
 
 let isAnimating = false;
 

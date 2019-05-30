@@ -1,0 +1,22 @@
+// ==========================================================================
+// Objects / demo
+// ==========================================================================
+
+.o-layout {
+    font-size: 0;
+    margin-left: -60px;
+}
+
+.o-layout__item--demo {
+    vertical-align: top;
+    box-sizing: border-box;
+    width: 50%;
+    display: inline-block;
+    font-size: 16px;
+    padding-left: 60px;
+    margin-bottom: 60px;
+
+    @media (max-width: 500px) {
+        width: 100%;
+    }
+}
