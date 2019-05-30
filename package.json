@@ -48,7 +48,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
     "core-js": "3.0.1",
-    "locomotive-scroll": "github:locomotivemtl/locomotive-scroll#v2.1",
+    "locomotive-scroll": "github:locomotivemtl/locomotive-scroll#v2",
     "modujs": "*",
     "modularload": "*",
     "normalize.css": "*",
