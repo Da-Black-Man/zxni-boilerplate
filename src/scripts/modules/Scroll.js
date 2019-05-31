@@ -8,22 +8,24 @@ export default class extends module {
     }
 
     init() {
+      setTimeout(() => {
         this.scroll = new ScrollManager({
-            container: $(this.el),
-            sections: '.js-section',
-            selector: '.js-animate',
-            smooth: true,
-            smoothMobile: true,
-            mobileContainer: $(this.el),
-            getDirection: true,
-            getSpeed: true,
-            inertia: 1,
-            scrollBarClassName: 'o-scrollbar',
-            isScrollingClassName: 'is-scrolling',
-            onScroll: (e) => {
-                // console.log(e.scroll.y);
-            }
+          container: $(this.el),
+          sections: '.js-section',
+          selector: '.js-animate',
+          smooth: true,
+          smoothMobile: true,
+          mobileContainer: $(this.el),
+          getDirection: true,
+          getSpeed: true,
+          inertia: 1,
+          scrollBarClassName: 'o-scrollbar',
+          isScrollingClassName: 'is-scrolling',
+          onScroll: (e) => {
+              // console.log(e.scroll.y);
+          }
         });
+      }, 500);
     }
 
     destroy() {

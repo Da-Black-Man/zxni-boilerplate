@@ -50,12 +50,12 @@ export default class extends Scroll {
             x: 0,
             y: 0,
             direction: null
-        }
+        };
 
         this.instance.delta = {
             x: 0,
             y: 0
-        }
+        };
 
         if(this.getSpeed) {
             this.instance.scroll.speed = 0;
@@ -125,7 +125,7 @@ export default class extends Scroll {
 
         // Resize event
         $window.on(EVENT.RESIZE,() => {
-            this.update()
+            this.update();
         });
 
         // Stop event
@@ -140,13 +140,15 @@ export default class extends Scroll {
     }
 
     initScrollBar() {
+        this.scrollbarWrapperName = document.getElementsByClassName(`${this.scrollBarClassName}__wrapper`);
         this.scrollbarWrapper = document.createElement('span');
         this.scrollbar = document.createElement('span');
-        this.scrollbarWrapper.classList.add(`${this.scrollBarClassName}_wrapper`);
+        this.scrollbarWrapper.classList.add(`${this.scrollBarClassName}__wrapper`);
         this.scrollbar.classList.add(`${this.scrollBarClassName}`);
 
         this.scrollbarWrapper.append(this.scrollbar);
         document.body.append(this.scrollbarWrapper);
+
         this.scrollbar.style.height = `${(window.innerHeight * window.innerHeight) / this.instance.limit}px`;
         this.scrollBarLimit = window.innerHeight - this.scrollbar.getBoundingClientRect().height;
 
@@ -154,6 +156,12 @@ export default class extends Scroll {
         window.addEventListener('mouseup',(e) => this.releaseScrollBar(e));
         window.addEventListener('mousemove',(e) => this.moveScrollBar(e));
 
+        // @todo
+        // Figure out to remove appended wrapper on load
+
+      if(this.scrollbarWrapperName.length > 1) {
+        document.body.removeChild(this.scrollbarWrapperName[0]);
+      }
     }
 
     reinitScrollBar() {
@@ -306,7 +314,7 @@ export default class extends Scroll {
                 newElement.middle = elementMiddle;
                 newElement.offset = elementOffset;
                 newElement.position = elementPosition;
-                newElement.speed = elementSpeed
+                newElement.speed = elementSpeed;
                 newElement.delay = elementDelay;
 
                 this.parallaxElements.push(newElement);
@@ -381,16 +389,16 @@ export default class extends Scroll {
         this.transformElements(isFirstCall);
         this.animateElements();
 
-        this.callbacks.onScroll(this.instance)
+        this.callbacks.onScroll(this.instance);
         this.timestamp = Date.now();
 
         // scrollbar translation
-        let scrollBarTranslation = (this.instance.scroll.y / this.instance.limit) * this.scrollBarLimit
-        this.scrollbar.style.transform = `translate3d(0,${scrollBarTranslation}px,0)`
+        let scrollBarTranslation = (this.instance.scroll.y / this.instance.limit) * this.scrollBarLimit;
+        this.scrollbar.style.transform = `translate3d(0,${scrollBarTranslation}px,0)`;
     }
 
     lerp (start, end, amt){
-        return (1-amt)*start+amt*end
+        return (1-amt)*start+amt*end;
     }
 
     /**
@@ -411,7 +419,7 @@ export default class extends Scroll {
         let offset = 0;
 
         if (typeof $targetElem === 'undefined' && typeof $sourceElem === 'undefined' && typeof targetOffset === 'undefined') {
-            console.warn('You must specify at least one parameter.')
+            console.warn('You must specify at least one parameter.');
             return false;
         }
 
@@ -502,7 +510,7 @@ export default class extends Scroll {
     }
 
     getTranslate(el){
-        const translate = {}
+        const translate = {};
         if(!window.getComputedStyle) return;
 
         const style = getComputedStyle(el);
@@ -607,18 +615,18 @@ export default class extends Scroll {
     }
 
     preloadImages() {
-        const images = Array.from(document.querySelectorAll('img'))
+        const images = Array.from(document.querySelectorAll('img'));
 
         images.forEach((image) => {
             const img = document.createElement('img');
 
             img.addEventListener('load', () => {
-                images.splice(images.indexOf(image), 1)
-                images.length === 0 && this.update()
+                images.splice(images.indexOf(image), 1);
+                images.length === 0 && this.update();
             });
 
-            img.src = image.getAttribute('src')
-        })
+            img.src = image.getAttribute('src');
+        });
     }
 
     /**

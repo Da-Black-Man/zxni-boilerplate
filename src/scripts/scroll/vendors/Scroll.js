@@ -59,7 +59,7 @@ export default class {
               y: 0,
               direction: ''
           }
-      }
+      };
 
       this.windowHeight = $window.height();
       this.windowMiddle = this.windowHeight / 2;
@@ -118,7 +118,7 @@ export default class {
 
       // Resize event
       $window.on(EVENT.RESIZE, debounce(() => {
-          this.update()
+          this.update();
       }, 20));
   }
 
@@ -227,7 +227,7 @@ export default class {
                   sticky: elementSticky,
                   callback: elementCallback,
                   viewportOffset: elementViewportOffset
-              }
+              };
           }
       };
   }
@@ -276,7 +276,7 @@ export default class {
           this.instance.scroll.x = window.pageXOffset;
       }
 
-      this.callbacks.onScroll(this.scroll)
+      this.callbacks.onScroll(this.scroll);
 
       this.animateElements();
   }
@@ -404,7 +404,7 @@ export default class {
       let offset = 0;
 
       if (typeof $targetElem === 'undefined' && typeof $sourceElem === 'undefined' && typeof targetOffset === 'undefined') {
-          console.warn('You must specify at least one parameter.')
+          console.warn('You must specify at least one parameter.');
           return false;
       }
 
