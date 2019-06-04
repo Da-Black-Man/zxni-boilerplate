@@ -164,7 +164,7 @@ export default class extends Scroll {
         this.scrollbar.addEventListener('mousedown',(e) => this.getScrollBar(e));
         window.addEventListener('mouseup',(e) => this.releaseScrollBar(e));
         window.addEventListener('mousemove',(e) => this.moveScrollBar(e));
-
+        // todo on transition remove appanded wrapper
         if(this.scrollbarWrapperName.length > 1) {
           document.body.removeChild(this.scrollbarWrapperName[0]);
         }
