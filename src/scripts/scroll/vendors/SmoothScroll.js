@@ -150,6 +150,7 @@ export default class extends Scroll {
     }
 
     initScrollBar() {
+        this.scrollbarWrapperName = document.getElementsByClassName(`${this.scrollBarClassName}__wrapper`);
         this.scrollbarWrapper = document.createElement('span');
         this.scrollbar = document.createElement('span');
         this.scrollbarWrapper.classList.add(`${this.scrollBarClassName}__wrapper`);
@@ -164,6 +165,9 @@ export default class extends Scroll {
         window.addEventListener('mouseup',(e) => this.releaseScrollBar(e));
         window.addEventListener('mousemove',(e) => this.moveScrollBar(e));
 
+        if(this.scrollbarWrapperName.length > 1) {
+          document.body.removeChild(this.scrollbarWrapperName[0]);
+        }
     }
 
     reinitScrollBar() {
