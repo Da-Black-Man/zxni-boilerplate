@@ -28,7 +28,9 @@ export default class extends Scroll {
 
         this.parallaxElements = [];
         this.isDraggingScrollBar = false;
-
+        this.isTicking = false;
+        this.hasScrollTicking = false;
+        this.isScrolling = false;
     }
 
     /**
@@ -50,12 +52,12 @@ export default class extends Scroll {
             x: 0,
             y: 0,
             direction: null
-        };
+        }
 
         this.instance.delta = {
             x: 0,
             y: 0
-        };
+        }
 
         if(this.getSpeed) {
             this.instance.scroll.speed = 0;
@@ -67,14 +69,22 @@ export default class extends Scroll {
                 return;
             }
 
-            if(!this.isDraggingScrollBar) {
-                this.instance.delta.y -= e.deltaY;
-                this.isScrolling = true;
-                html.classList.add(this.isScrollingClassName);
+            if (!this.isTicking && !this.isDraggingScrollBar) {
+                requestAnimationFrame(() => {
+                    if (!this.isScrolling) {
+                        this.isScrolling = true;
+                        this.checkScroll();
+                        html.classList.add(this.isScrollingClassName);
+                    }
 
-                if(this.instance.delta.y < 0) this.instance.delta.y = 0;
-                if(this.instance.delta.y > this.instance.limit) this.instance.delta.y = this.instance.limit;
+                    this.instance.delta.y -= e.deltaY;
+
+                    if(this.instance.delta.y < 0) this.instance.delta.y = 0;
+                    if(this.instance.delta.y > this.instance.limit) this.instance.delta.y = this.instance.limit;
+                });
+                this.isTicking = true;
             }
+            this.isTicking = false;
         });
 
         this.setScrollLimit();
@@ -125,7 +135,7 @@ export default class extends Scroll {
 
         // Resize event
         $window.on(EVENT.RESIZE,() => {
-            this.update();
+            this.update()
         });
 
         // Stop event
@@ -140,7 +150,6 @@ export default class extends Scroll {
     }
 
     initScrollBar() {
-        this.scrollbarWrapperName = document.getElementsByClassName(`${this.scrollBarClassName}__wrapper`);
         this.scrollbarWrapper = document.createElement('span');
         this.scrollbar = document.createElement('span');
         this.scrollbarWrapper.classList.add(`${this.scrollBarClassName}__wrapper`);
@@ -148,7 +157,6 @@ export default class extends Scroll {
 
         this.scrollbarWrapper.append(this.scrollbar);
         document.body.append(this.scrollbarWrapper);
-
         this.scrollbar.style.height = `${(window.innerHeight * window.innerHeight) / this.instance.limit}px`;
         this.scrollBarLimit = window.innerHeight - this.scrollbar.getBoundingClientRect().height;
 
@@ -156,12 +164,6 @@ export default class extends Scroll {
         window.addEventListener('mouseup',(e) => this.releaseScrollBar(e));
         window.addEventListener('mousemove',(e) => this.moveScrollBar(e));
 
-        // @todo
-        // Figure out to remove appended wrapper on load
-
-      if(this.scrollbarWrapperName.length > 1) {
-        document.body.removeChild(this.scrollbarWrapperName[0]);
-      }
     }
 
     reinitScrollBar() {
@@ -177,27 +179,28 @@ export default class extends Scroll {
     }
 
     getScrollBar(e) {
-        this.isScrolling = false;
         this.isDraggingScrollBar = true;
-        html.classList.remove(this.isScrollingClassName);
-
-    }
-
-    releaseScrollBar(e) {
-        this.isScrolling = true;
-        this.isDraggingScrollBar = false;
+        this.checkScroll();
         html.classList.add(this.isScrollingClassName);
     }
 
-    moveScrollBar(e) {
-        if(this.isDraggingScrollBar) {
+    releaseScrollBar(e) {
+        this.isDraggingScrollBar = false;
+        html.classList.remove(this.isScrollingClassName);
+    }
 
-            let y = (e.pageY * 100 / (window.innerHeight)) * this.instance.limit / 100;
+     moveScrollBar(e) {
+        if (!this.isTicking && this.isDraggingScrollBar) {
+            requestAnimationFrame(() => {
+                let y = (e.pageY * 100 / (window.innerHeight)) * this.instance.limit / 100;
 
-            if(y > 0 && y < this.instance.limit) {
-                this.instance.delta.y = y;
-            }
+                if(y > 0 && y < this.instance.limit) {
+                    this.instance.delta.y = y;
+                }
+            });
+            this.isTicking = true;
         }
+        this.isTicking = false;
     }
 
     /**
@@ -314,7 +317,7 @@ export default class extends Scroll {
                 newElement.middle = elementMiddle;
                 newElement.offset = elementOffset;
                 newElement.position = elementPosition;
-                newElement.speed = elementSpeed;
+                newElement.speed = elementSpeed
                 newElement.delay = elementDelay;
 
                 this.parallaxElements.push(newElement);
@@ -332,6 +335,24 @@ export default class extends Scroll {
         };
     }
 
+    checkScroll() {
+        if (this.isScrolling || this.isDraggingScrollBar) {
+            if (!this.hasScrollTicking) {
+                requestAnimationFrame(() => this.checkScroll());
+                this.hasScrollTicking = true;
+            }
+
+            const distance = (Math.abs(this.instance.delta.y - this.instance.scroll.y));
+            if ((distance < 1 && this.instance.delta.y != 0) || (distance < 0.5 && this.instance.delta.y == 0)) {
+                this.isScrolling = false;
+                this.instance.scroll.y = Math.round(this.instance.scroll.y);
+                html.classList.remove(this.isScrollingClassName);
+            }
+
+            this.render();
+        }
+    }
+
     /**
      * Render the class/transform animations, and update the global scroll positionning.
      *
@@ -341,17 +362,11 @@ export default class extends Scroll {
      * @return {void}
      */
     render(isFirstCall, e) {
-        this.raf = requestAnimationFrame(()=>this.render());
-
         if(this.isScrolling) {
             this.instance.scroll.y = this.lerp(this.instance.scroll.y,this.instance.delta.y, this.inertia);
         } else if(this.isDraggingScrollBar) {
             this.instance.scroll.y = this.lerp(this.instance.scroll.y,this.instance.delta.y, 0.2);
-        }else {
-            this.instance.scroll.y = this.lerp(this.instance.scroll.y,this.instance.delta.y, this.inertia * 0.5);
         }
-
-        // console.log(this.isDraggingScrollBar, this.instance.scroll.y);
 
         // need to move the container
         this.$container.css({
@@ -382,23 +397,21 @@ export default class extends Scroll {
             }
         }
 
-        if(Math.abs(this.instance.scroll.y - this.instance.delta.y) < 1 ) {
-            html.classList.remove(this.isScrollingClassName);
-        }
-
         this.transformElements(isFirstCall);
         this.animateElements();
 
-        this.callbacks.onScroll(this.instance);
+        this.callbacks.onScroll(this.instance)
         this.timestamp = Date.now();
 
         // scrollbar translation
-        let scrollBarTranslation = (this.instance.scroll.y / this.instance.limit) * this.scrollBarLimit;
-        this.scrollbar.style.transform = `translate3d(0,${scrollBarTranslation}px,0)`;
+        let scrollBarTranslation = (this.instance.scroll.y / this.instance.limit) * this.scrollBarLimit
+        this.scrollbar.style.transform = `translate3d(0,${scrollBarTranslation}px,0)`
+
+        this.hasScrollTicking = false;
     }
 
     lerp (start, end, amt){
-        return (1-amt)*start+amt*end;
+        return (1-amt)*start+amt*end
     }
 
     /**
@@ -419,7 +432,7 @@ export default class extends Scroll {
         let offset = 0;
 
         if (typeof $targetElem === 'undefined' && typeof $sourceElem === 'undefined' && typeof targetOffset === 'undefined') {
-            console.warn('You must specify at least one parameter.');
+            console.warn('You must specify at least one parameter.')
             return false;
         }
 
@@ -510,7 +523,7 @@ export default class extends Scroll {
     }
 
     getTranslate(el){
-        const translate = {};
+        const translate = {}
         if(!window.getComputedStyle) return;
 
         const style = getComputedStyle(el);
@@ -615,18 +628,18 @@ export default class extends Scroll {
     }
 
     preloadImages() {
-        const images = Array.from(document.querySelectorAll('img'));
+        const images = Array.from(document.querySelectorAll('img'))
 
         images.forEach((image) => {
             const img = document.createElement('img');
 
             img.addEventListener('load', () => {
-                images.splice(images.indexOf(image), 1);
-                images.length === 0 && this.update();
+                images.splice(images.indexOf(image), 1)
+                images.length === 0 && this.update()
             });
 
-            img.src = image.getAttribute('src');
-        });
+            img.src = image.getAttribute('src')
+        })
     }
 
     /**
