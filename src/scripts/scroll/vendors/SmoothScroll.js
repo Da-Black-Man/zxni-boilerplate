@@ -32,7 +32,7 @@ export default class extends Scroll {
         this.isTicking = false;
         this.hasScrollTicking = false;
         this.isScrolling = false;
-        this.$container = this.el;
+        // this.$container = this.el;
 
         this.windowHeight = $window.height();
         this.windowMiddle = this.windowHeight / 2;
@@ -145,7 +145,7 @@ export default class extends Scroll {
     initScrollBar() {
         this.scrollbarWrapper = document.createElement('span');
         this.scrollbar = document.createElement('span');
-        this.scrollbarWrapper.classList.add(`${this.scrollBarClassName}_wrapper`);
+        this.scrollbarWrapper.classList.add(`${this.scrollBarClassName}__wrapper`);
         this.scrollbar.classList.add(`${this.scrollBarClassName}`);
 
         this.scrollbarWrapper.append(this.scrollbar);
@@ -659,7 +659,6 @@ export default class extends Scroll {
 
     preloadImages() {
         const images = Array.from(document.querySelectorAll('img'));
-
         images.forEach((image) => {
             const img = document.createElement('img');
 
@@ -669,6 +668,7 @@ export default class extends Scroll {
             });
 
             img.src = image.getAttribute('src');
+
         });
     }
 

@@ -8,6 +8,7 @@ export default class extends module {
     }
 
     init() {
+
       setTimeout(() => {
         this.scroll = new ScrollManager({
           container: $(this.el),
@@ -28,7 +29,9 @@ export default class extends module {
       }, 500);
     }
 
+
+
     destroy() {
-        this.scroll.destroy();
+      this.scroll.destroy();
     }
 }
