@@ -19,7 +19,9 @@ module.exports = merge(common, {
     }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/bundle.css'
+      filename: 'assets/css/bundle.css',
+      chunkFilename: 'assets/css/vendor.css'
+
     })
   ],
   module: {
@@ -39,9 +41,7 @@ module.exports = merge(common, {
             options: {
               plugins: function () {
                 return [
-                  require('autoprefixer')({
-                    browsers: ['> 5%']
-                  })
+                  require('autoprefixer')
                 ];
               }
             }
