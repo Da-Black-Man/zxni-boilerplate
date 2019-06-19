@@ -32,7 +32,7 @@ export default class extends Scroll {
         this.isTicking = false;
         this.hasScrollTicking = false;
         this.isScrolling = false;
-        // this.$container = this.el;
+        //  this.$container = this.el;
 
         this.windowHeight = $window.height();
         this.windowMiddle = this.windowHeight / 2;
@@ -110,6 +110,8 @@ export default class extends Scroll {
     events() {
         // Rebuild event
         this.$container.on(EVENT.REBUILD, () => {
+
+            this.scrollTo(0, 0, 1);
             this.update();
         });
 
@@ -138,6 +140,7 @@ export default class extends Scroll {
 
         // Resize event
         $window.on(EVENT.RESIZE, debounce(() => {
+
             this.update();
         },600));
     }

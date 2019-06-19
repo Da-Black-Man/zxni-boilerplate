@@ -22,9 +22,8 @@ export const EVENT = {
 
 export const DEFAULTS = {
     container: $document,
-    sections: '.js-section',
     mobileContainer: $document,
-    onScroll: function(){},
+    sections: '.js-section',
     selector: '.js-animate',
     smooth: false,
     smoothMobile: false,
@@ -33,6 +32,7 @@ export const DEFAULTS = {
     getSpeed: false,
     scrollBarClassName: 'o-scrollbar',
     isScrollingClassName: 'is-scrolling',
+    onScroll: function(){},
 };
 
 /**
@@ -65,6 +65,7 @@ export default class {
         this.animatedElements = [];
 
         this.requestId = undefined;
+
     }
 
     /**
@@ -77,23 +78,26 @@ export default class {
         this.render();
 
         // On scroll
-        $document.on(EVENT.SCROLL, () => {
+         this.$container.on(EVENT.SCROLL, () => {
             this.render();
         });
 
         // Rebuild event
-        $document.on(EVENT.REBUILD, () => {
+         this.$container.on(EVENT.REBUILD, () => {
+          this.scrollTo({
+            targetOffset: 0
+          });
             this.update();
         });
 
         // Update event
-        $document.on(EVENT.UPDATE, (event, options) => this.update(options));
+         this.$container.on(EVENT.UPDATE, (event, options) => this.update(options));
 
         // Render event
-        $document.on(EVENT.RENDER, () => this.render());
+         this.$container.on(EVENT.RENDER, () => this.render());
 
         // Scrollto button event
-        $document.on(EVENT.CLICK, '.js-scrollto', (event) => {
+         this.$container.on(EVENT.CLICK, '.js-scrollto', (event) => {
             event.preventDefault();
 
             let $target = $(event.currentTarget);
@@ -104,10 +108,10 @@ export default class {
                 offsetElem: offset
             });
         });
-        $document.on(EVENT.SCROLLTO, (event) => this.scrollTo(event.options));
+         this.$container.on(EVENT.SCROLLTO, (event) => this.scrollTo(event.options));
 
         // Setup done
-        $document.triggerHandler({
+         $document.triggerHandler({
             type: EVENT.ISREADY
         });
 

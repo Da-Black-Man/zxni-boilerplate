@@ -26,6 +26,7 @@ export default class extends module {
               // console.log(e.scroll.y);
           }
         });
+
       }, 500);
     }
 
