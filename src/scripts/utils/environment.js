@@ -1,4 +1,4 @@
-const APP_NAME     = 'Boilerplate';
+const APP_NAME     = 'zxni';
 const DATA_API_KEY = '.data-api';
 
 const $document    = $(document);
