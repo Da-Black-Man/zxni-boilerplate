@@ -1,0 +1,39 @@
+
+
+
+  .has-custom-cursor {
+    &, a {
+      cursor: none;
+    }
+  }
+
+
+.o-cursor {
+  &-circle {
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    border-radius: 50%;
+    &__outer {
+      width: 30px;
+      height: 30px;
+      border: 1px solid $cursor-color;
+      z-index: 12000;
+      opacity: 0.2;
+    }
+    &__inner {
+      width: 5px;
+      height: 5px;
+      left: -2.5px;
+      top: -2.5px;
+      z-index: 11000;
+      background: $cursor-color;
+    }
+  }
+
+
+
+
+
+}

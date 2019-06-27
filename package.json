@@ -48,10 +48,12 @@
   "dependencies": {
     "@babel/polyfill": "^7.4.0",
     "core-js": "3.0.1",
+    "gsap": "^2.1.3",
     "locomotive-scroll": "github:locomotivemtl/locomotive-scroll#v2",
     "modujs": "*",
     "modularload": "*",
     "normalize.css": "*",
+    "paper": "^0.12.3",
     "svg4everybody": "*",
     "virtual-scroll": "*"
   }

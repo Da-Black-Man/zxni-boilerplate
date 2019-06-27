@@ -1,7 +1,12 @@
 
-html.has-smooth-scroll {
+html {
+  &.has-smooth-scroll {
     overflow: hidden;
-    height: 100%;
+    position: fixed;
+    &.is-dragging {
+        user-select: none;
+    }
+  }
 }
 
 
@@ -15,10 +20,11 @@ body {
 
 
 .o-scroll{
+    box-sizing: border-box;
+    overflow: hidden;
     width: 100vw;
-    html.has-smooth-scroll & {
+    .has-smooth-scroll & {
         position: relative;
-        overflow: hidden;
     }
 }
 
@@ -34,7 +40,6 @@ body {
 
     &:hover {
         transform: scaleX(1.3);
-        cursor: grab;
     }
 }
 .o-scrollbar {
@@ -115,3 +120,4 @@ body {
         }
     }
 }
+

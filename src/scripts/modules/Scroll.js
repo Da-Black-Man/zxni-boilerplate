@@ -8,7 +8,6 @@ export default class extends module {
     }
 
     init() {
-
       setTimeout(() => {
         this.scroll = new ScrollManager({
           container: $(this.el),
@@ -19,13 +18,14 @@ export default class extends module {
           mobileContainer: $(this.el),
           getDirection: true,
           getSpeed: true,
-          inertia: 1,
+          inertia: 0.8,
           scrollBarClassName: 'o-scrollbar',
           isScrollingClassName: 'is-scrolling',
           onScroll: (e) => {
               // console.log(e.scroll.y);
           }
         });
+
 
       }, 500);
     }
