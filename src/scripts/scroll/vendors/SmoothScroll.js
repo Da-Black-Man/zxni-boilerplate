@@ -144,8 +144,8 @@ export default class extends Scroll {
       this.scrollbarWrapper.classList.add(`${this.scrollBarClassName}__wrapper`);
       this.scrollbar.classList.add(`${this.scrollBarClassName}`);
 
-      this.scrollbarWrapper.append(this.scrollbar);
-      document.body.append(this.scrollbarWrapper);
+      this.scrollbarWrapper.appendChild(this.scrollbar);
+      document.body.appendChild(this.scrollbarWrapper);
       this.scrollbar.style.height = `${(window.innerHeight * window.innerHeight) / this.instance.limit}px`;
       this.scrollBarLimit = window.innerHeight - this.scrollbar.getBoundingClientRect().height;
 
