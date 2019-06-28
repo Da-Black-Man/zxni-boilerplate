@@ -14,7 +14,7 @@
 
 /* stylelint-disable */
 @if (type-of($container-width) != number) {
-    @error "`#{$container-width}` needs to be a number."
+    @error "`#{$container-width}` needs to be a number.";
 }
 /* stylelint-enable */
 
