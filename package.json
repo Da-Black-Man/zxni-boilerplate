@@ -51,6 +51,7 @@
     "modujs": "*",
     "modularload": "*",
     "normalize.css": "*",
+    "regenerator-runtime": "^0.13.2",
     "svg4everybody": "*",
     "virtual-scroll": "*"
   }
