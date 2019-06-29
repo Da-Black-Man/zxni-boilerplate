@@ -20,6 +20,7 @@ export default class {
     this.easing = Back.easeInOut.config(1.7);
     this.clientX = -100;
     this.clientY = -100;
+    this.activeCursor = false;
 
     this.init();
   }
@@ -52,7 +53,7 @@ export default class {
       setTimeout(() => {
         this.outerCursorSpeed = 0.2;
       }, 100);
-      this.showCursor = true;
+      this.activeCursor = true;
     };
     document.addEventListener("mousemove", unveilCursor);
 
@@ -72,7 +73,7 @@ export default class {
           y: this.clientY - this.outerCursorBox.height / 2
         });
       }
-      if (this.showCursor) {
+      if (this.activeCursor) {
         document.removeEventListener("mousemove", unveilCursor);
       }
       requestAnimationFrame(render);
