@@ -379,6 +379,10 @@ export default class extends Scroll {
               html.classList.remove(this.isScrollingClassName);
           }
 
+          const scrollBottom = this.instance.scroll.y + this.windowHeight;
+          20 < this.instance.scroll.y ? $html.addClass("has-scrolled") : $html.hasClass("has-scrolled") && $html.removeClass("has-scrolled");
+          scrollBottom > $document.height() - 100 ? $html.addClass('has-scrolled-bottom') : $html.hasClass("has-scrolled-bottom") && $html.removeClass("has-scrolled-bottom");
+
           this.render();
       }
   }
