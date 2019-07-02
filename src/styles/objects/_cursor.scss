@@ -5,10 +5,16 @@
     &, a {
       cursor: none;
     }
+    .o-cursor {
+      opacity: 1;
+    }
   }
 
 
 .o-cursor {
+  opacity: 0;
+  transition: opacity .6s cubic-bezier(.25,.46,.45,.94) 1s;
+
   &-circle {
     position: fixed;
     left: 0;
