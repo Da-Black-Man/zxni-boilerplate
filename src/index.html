@@ -15,23 +15,12 @@
   </head>
 
   <body data-module-load>
-
-    <header>
-      <a href="/">
-        <h1>Boilerplate</h1>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="page.html" data-load="customTransition">Custom page</a></li>
-        </ul>
-      </nav>
-    </header>
+    ${require('./views/template/header.html')}
 
     <main data-load-container data-namespace="home" data-page="overview">
       <div class="o-cursor" data-module-cursor>
         <div class="o-cursor-circle o-cursor-circle__inner"></div>
-				<div class="o-cursor-circle o-cursor-circle__outer"></div>
+        <div class="o-cursor-circle o-cursor-circle__outer"></div>
       </div>
 
       <div class="o-scroll" data-module-scroll>
@@ -826,10 +815,12 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script>
-      window.jQuery || document.write('<script src="scripts/vendors/jquery.min.js"><\/script>')
+      window.jQuery || document.write('<script src="scripts/vendors/jquery.min.js"><\\/script>');
 
     </script>
+
   </body>
 
 </html>

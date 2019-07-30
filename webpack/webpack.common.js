@@ -12,7 +12,7 @@ module.exports = {
     filename: 'scripts/[name].js'
   },
   optimization: {
-    minimize: true,
+    minimize: false,
     splitChunks: {
       chunks: 'all',
       name: false
@@ -24,11 +24,13 @@ module.exports = {
         { from: Path.resolve(__dirname, '../src/assets'), to: 'assets' }
     ]),
     new HtmlWebpackPlugin({
+      title: 'Home | Boilerplate',
       filename: 'index.html',
       minify:  false,
       template: Path.resolve(__dirname, '../src/index.html')
     }),
     new HtmlWebpackPlugin({
+      title: 'Page | Boilerplate',
       filename: 'page.html',
       minify:  false,
       template: Path.resolve(__dirname, '../src/page.html')
@@ -44,6 +46,17 @@ module.exports = {
         test: /\.mjs$/,
         include: /node_modules/,
         type: 'javascript/auto'
+      },
+      {
+        test: /\.(html)$/,
+        use: {
+          loader: 'html-loader',
+          options: {
+            interpolate: true,
+            minimize: false,
+            keepClosingSlash: true
+          }
+        }
       },
       {
         test: /\.(gif|jpg|png|jpe?g)$/i,
