@@ -1,5 +1,5 @@
 import { module } from 'modujs';
-import { $html } from '../utils/environment';
+import { html } from '../utils/environment';
 import Cursor from '../cursor/CursorManager';
 
 
@@ -19,6 +19,6 @@ export default class extends module {
 
     destroy() {
       super.destroy();
-      $html.removeClass('has-custom-cursor');
+      html.classList.remove('has-custom-cursor');
     }
 }

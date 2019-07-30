@@ -1,123 +1,155 @@
 
-html {
-  &.has-smooth-scroll {
-    overflow: hidden;
-    position: fixed;
-    &.is-dragging {
-        user-select: none;
-    }
+// html {
+//   &.has-smooth-scroll {
+//     overflow: hidden;
+//     position: fixed;
+//     &.is-dragging {
+//         user-select: none;
+//     }
+//   }
+// }
+
+
+// body {
+//     .has-smooth-scroll & {
+//         height: 100%;
+//         width: 100%;
+//         overflow: hidden;
+//     }
+// }
+
+
+// .o-scroll{
+//     box-sizing: border-box;
+//     overflow: hidden;
+//     width: 100vw;
+//     .has-smooth-scroll & {
+//         position: relative;
+//     }
+// }
+
+// .o-scrollbar__wrapper {
+//     width: 10px;
+//     position: fixed;
+//     right: 0;
+//     top: 0;
+//     bottom: 0;
+//     transform-origin: center right;
+//     transform: scaleX(1);
+//     transition: transform 0.2s linear;
+
+//     &:hover {
+//         transform: scaleX(1.3);
+//     }
+// }
+// .o-scrollbar {
+//     background-color: black;
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+//     right: 0;
+//     border-radius: 5px;
+//     opacity: 0;
+//     transition: opacity .6s cubic-bezier(.215,.61,.355,1);
+
+//     &:hover {
+//         cursor: grab;
+//     }
+//     .is-scrolling & {
+//       opacity:1;
+//     }
+//     .o-scrollbar__wrapper:hover & {
+//       opacity: 1
+//     }
+// }
+
+
+// .scroll-content {
+//     overflow: auto;
+//     transform: translate3d(0,0,0);
+//     margin: 0;
+//     overflow: visible;
+//     height: 100%;
+
+//     body[data-wheel-reversed] & {
+//         width: 200vw;
+//     }
+// }
+
+
+
+.o-scroll {
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100vw;
+  background-color: hsl(0,11%, 81%);
+
+  .has-scroll-smooth & {
+      position: relative;
   }
 }
 
+.c-scrollbar {
+  width: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  transform-origin: center right;
+  transform: scaleX(1);
+  transition: transform 0.2s linear;
 
-body {
-    .has-smooth-scroll & {
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-    }
+  &:hover {
+      transform: scaleX(1.3);
+      cursor: grab;
+  }
 }
 
+.c-scrollbar_thumb {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 
-.o-scroll{
-    box-sizing: border-box;
-    overflow: hidden;
-    width: 100vw;
-    .has-smooth-scroll & {
-        position: relative;
-    }
+  &:hover {
+      cursor: pointer;
+  }
 }
 
-.o-scrollbar__wrapper {
-    width: 10px;
-    position: fixed;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    transform-origin: center right;
-    transform: scaleX(1);
-    transition: transform 0.2s linear;
+/* Default styles */
+//
+// .c-scrollbar {
+//     position: absolute;
+//     right: 0;
+//     top: 0;
+//     width: 11px;
+//     height: 100vh;
+//     transform-origin: center right;
+//     transition: transform 0.3s, opacity 0.3s;
+//     opacity: 0;
 
-    &:hover {
-        transform: scaleX(1.3);
-    }
-}
-.o-scrollbar {
-    background-color: black;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    border-radius: 5px;
-    opacity: 0;
-    transition: opacity .6s cubic-bezier(.215,.61,.355,1);
+//     &:hover {
+//         transform: scaleX(1.45);
+//     }
 
-    &:hover {
-        cursor: grab;
-    }
-    .is-scrolling & {
-      opacity:1;
-    }
-    .o-scrollbar__wrapper:hover & {
-      opacity: 1
-    }
-}
+//     &:hover, .has-scroll-scrolling &, .has-scroll-dragging & {
+//         opacity: 1;
+//     }
+// }
 
+// .c-scrollbar_thumb {
+//     position: absolute;
+//     top: 0;
+//     right: 0;
+//     background-color: black;
+//     opacity: 0.5;
+//     width: 7px;
+//     border-radius: 10px;
+//     margin: 2px;
+//     cursor: grab;
 
-.scroll-content {
-    overflow: auto;
-    transform: translate3d(0,0,0);
-    margin: 0;
-    overflow: visible;
-    height: 100%;
-
-    body[data-wheel-reversed] & {
-        width: 200vw;
-    }
-}
-
-// Scrollbar
-// ==========================================================================
-[data-scrollbar],[scrollbar],scrollbar{display:block;position:relative}[data-scrollbar] .scroll-content,[scrollbar] .scroll-content,scrollbar .scroll-content{-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform}[data-scrollbar].sticky .scrollbar-track,[scrollbar].sticky .scrollbar-track,scrollbar.sticky .scrollbar-track{background:hsla(0,0%,87%,.75)}[data-scrollbar] .scrollbar-track,[scrollbar] .scrollbar-track,scrollbar .scrollbar-track{position:absolute;opacity:0;z-index:1;-webkit-transition:opacity .5s ease-out,background .5s ease-out;transition:opacity .5s ease-out,background .5s ease-out;background:none}[data-scrollbar] .scrollbar-track.show,[data-scrollbar] .scrollbar-track:hover,[scrollbar] .scrollbar-track.show,[scrollbar] .scrollbar-track:hover,scrollbar .scrollbar-track.show,scrollbar .scrollbar-track:hover{opacity:1}[data-scrollbar] .scrollbar-track:hover,[scrollbar] .scrollbar-track:hover,scrollbar .scrollbar-track:hover{background:hsla(0,0%,87%,.75)}[data-scrollbar] .scrollbar-track-x,[scrollbar] .scrollbar-track-x,scrollbar .scrollbar-track-x{bottom:0;left:0;width:100%;height:8px}[data-scrollbar] .scrollbar-track-y,[scrollbar] .scrollbar-track-y,scrollbar .scrollbar-track-y{top:0;right:0;width:8px;height:100%}[data-scrollbar] .scrollbar-thumb,[scrollbar] .scrollbar-thumb,scrollbar .scrollbar-thumb{position:absolute;top:0;left:0;width:8px;height:8px;background:rgba(0,0,0,.5);border-radius:4px}[data-scrollbar] .overscroll-glow,[scrollbar] .overscroll-glow,scrollbar .overscroll-glow{position:absolute;top:0;left:0;width:100%;height:100%}
-
-.scrollbar-track {
-    user-select: none;
-    background-color: transparent !important;
-    width: 14px !important;
-    opacity: 0 !important;
-    z-index: 99999 !important;
-
-    .scrolling & {
-        opacity: 0.75 !important;
-    }
-
-    &:hover {
-        opacity: 1 !important;
-        background-color: #fafafa !important;
-    }
-}
-
-.scrollbar-thumb {
-    position: relative;
-    width: 14px !important;
-    background-color: transparent !important;
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        bottom: 3px;
-        left: 3px;
-        background-color: #c1c1c1;
-        border-radius: 4px;
-        transition: background-color $speed $easing;
-    }
-
-    &:hover {
-        &::after {
-            background-color: #7d7d7d;
-        }
-    }
-}
-
+//     .has-scroll-dragging & {
+//         cursor: grabbing;
+//     }
+// }

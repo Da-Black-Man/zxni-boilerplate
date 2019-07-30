@@ -75,5 +75,22 @@ $breakpoint-delimiter: \@ !default;
                 }
             }
         }
+
+        @media only screen and (min-width: $from-small) {
+          @for $numerator from 1 through $denominator {
+            .u-#{$numerator}#{$fractions-delimiter}#{$denominator}#{$breakpoint}\@small {
+              width: ($numerator / $denominator) * 100% $important;
+            }
+          }
+        }
+
+        @media only screen and (min-width: $from-medium) {
+          @for $numerator from 1 through $denominator {
+            .u-#{$numerator}#{$fractions-delimiter}#{$denominator}#{$breakpoint}\@medium {
+              width: ($numerator / $denominator) * 100% $important;
+            }
+          }
+        }
     }
+
 }

@@ -33,18 +33,16 @@
 
 // Objects
 // ==========================================================================
+@import "objects/scroll";
+@import "objects/cursor";
 @import "objects/container";
 @import "objects/ratio";
 @import "objects/layout";
-@import "objects/form";
-@import "objects/article";
 @import "objects/button";
+@import "objects/image";
 @import "objects/title";
-@import "objects/background";
-@import "objects/pjax";
-@import "objects/scroll";
-@import "objects/cursor";
 
+// @import "objects/form";
 // @import "objects/grid";
 // @import "objects/crop";
 // @import "objects/table";
@@ -55,19 +53,20 @@
 
 // Components
 // ==========================================================================
-// @import "components/component";
+@import "components/demo";
+
 
 // Templates
 // ==========================================================================
-@import "templates/demo";
+// @import "templates/template";
 
 // Utilities
 // ==========================================================================
 @import "utilities/ratio";
 @import "utilities/widths";
 // @import "utilities/align";
+// @import "utilities/anime";
 // @import "utilities/helpers";
 // @import "utilities/states";
-// @import "utilities/headings";
 // @import "utilities/spacing";
 // @import "utilities/print";

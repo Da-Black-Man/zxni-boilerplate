@@ -223,7 +223,7 @@
 /// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
 @mixin first-child() {
     &:first-of-type {
-        @content
+        @content;
     }
 }
 
@@ -232,7 +232,7 @@
 /// @content [Write the style you want to apply to the children, and it will be added within the @content directive]
 @mixin last-child() {
     &:last-of-type {
-        @content
+        @content;
     }
 }
 

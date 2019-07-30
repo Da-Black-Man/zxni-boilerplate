@@ -2,6 +2,25 @@
 // Utilities / Helpers
 // ==========================================================================
 
+// Colors
+.u-white {
+  color: $white;
+}
+
+// Text / font
+.u-label {
+  @include u-label;
+}
+
+.u-icon {
+  font-family: $font-lucida;
+  font-size: rem(18px);
+}
+
+.u-text {
+  font-size: rem(14px);
+}
+
 // Layout
 // ==========================================================================
 .u-clearfix {

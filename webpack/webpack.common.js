@@ -54,7 +54,6 @@ module.exports = {
           options: {
             interpolate: true,
             minimize: false,
-            keepClosingSlash: true
           }
         }
       },

@@ -62,7 +62,7 @@ module.exports = merge(common, {
     host: '0.0.0.0',
     port: 8080,
     hot: true,
-    open: false,
+    open: true,
     before(app, server) {
       const files = [Path.join(__dirname, '../src/*.html')];
       const chokidar = require('chokidar');
