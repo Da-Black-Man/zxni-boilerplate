@@ -1,19 +1,24 @@
+.has-custom-cursor {
 
-
-
-  .has-custom-cursor {
-    &, a {
-      cursor: none;
-    }
-    .o-cursor {
-      opacity: 1;
-    }
+  &,
+  a {
+    cursor: none;
   }
+
+  .o-cursor {
+    opacity: 1;
+  }
+}
 
 
 .o-cursor {
+  html:not(.has-custom-cursor) & {
+    visibility: hidden;
+    opacity: 0;
+  }
+
   opacity: 0;
-  transition: opacity .6s cubic-bezier(.25,.46,.45,.94) 1s;
+  transition: opacity .6s $Power1EaseOut 1s;
 
   &-circle {
     position: fixed;
@@ -21,6 +26,7 @@
     top: 0;
     pointer-events: none;
     border-radius: 50%;
+
     &__outer {
       width: 30px;
       height: 30px;
@@ -28,6 +34,7 @@
       z-index: 12000;
       opacity: 0.2;
     }
+
     &__inner {
       width: 6px;
       height: 6px;
@@ -37,9 +44,4 @@
       background: $cursor-color;
     }
   }
-
-
-
-
-
 }
