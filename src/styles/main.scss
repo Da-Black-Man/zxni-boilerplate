@@ -33,6 +33,7 @@
 
 // Objects
 // ==========================================================================
+@import "objects/loader";
 @import "objects/scroll";
 @import "objects/cursor";
 @import "objects/container";
@@ -64,7 +65,7 @@
 // ==========================================================================
 @import "utilities/ratio";
 @import "utilities/widths";
-// @import "utilities/align";
+@import "utilities/align";
 // @import "utilities/anime";
 // @import "utilities/helpers";
 // @import "utilities/states";

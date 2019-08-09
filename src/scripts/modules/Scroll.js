@@ -1,5 +1,5 @@
 import { module } from 'modujs';
-import locomotiveScroll from '../scroll/locomotive-scroll';
+import LocomotiveScroll from 'locomotive-scroll';
 
 export default class extends module {
     constructor(m) {
@@ -8,11 +8,8 @@ export default class extends module {
 
     init() {
       setTimeout(() => {
-        document.documentElement.classList.add('is-ready');
-    },300);
-      setTimeout(() => {
-       this.scroll = new locomotiveScroll({
-          el: document.querySelector('#js-scroll'),
+       this.scroll = new LocomotiveScroll({
+          el: this.el,
           smooth: true,
           getSpeed: true,
           getDirection: true
@@ -83,7 +80,7 @@ export default class extends module {
       });
 
 
-      }, 1000);
+      }, 500);
     }
 
 

@@ -32,11 +32,11 @@ $font-size-h5:  18px  !default;
 $font-size-h6:  16px  !default;
 $line-height-h: $line-height;
 // Weights
-$light:  300;
-$normal: 400;
-$medium: 500;
+$light:     300;
+$normal:    400;
+$medium:    500;
 $semi-bold: 600;
-$bold:   700;
+$bold:      700;
 
 // Transitions
 // =============================================================================
@@ -69,8 +69,8 @@ $unit-small: 30px;
 
 // Container
 // ==========================================================================
-$container-width: 1440px;
-$padding:         $unit;
+$container-width: 2560px;
+$padding:         9rem;
 
 // Breakpoints
 // =============================================================================

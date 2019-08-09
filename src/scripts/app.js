@@ -15,8 +15,10 @@ console.log("%c||||||||||| Z X N I |||||||||||", "font-size:10px;color:#555; bac
 
 class Zxni {
   constructor() {
+    html.classList.add('is-loading');
     window.addEventListener('load',() => {
       html.classList.add('is-loaded', 'is-ready');
+      html.classList.remove('is-loading');
       this.init();
     });
   }

@@ -7,7 +7,7 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'cheap-eval-source-map',
   output: {
-    chunkFilename: 'scripts/vendor.js'
+    chunkFilename: 'scripts/[name].vender.js'
   },
   module: {
     rules: [{
@@ -82,5 +82,5 @@ module.exports = merge(common, {
           server.sockWrite(server.sockets, "content-changed");
         });
     }
-  },
+  }
 });

@@ -1,3 +1,4 @@
+
 .c-choochoo_item {
   padding: 50vh 0;
   font-size: rem(100px);
@@ -213,7 +214,7 @@
 .c-fixed_wrapper {
   position: relative;
   overflow: hidden;
-  background-color: $beige;
+  background-color: #fff;
 
   @media (min-width: $from-medium) {
       height: 100vh;
@@ -420,7 +421,7 @@
 
 .c-lerp-block_index {
   vertical-align: middle;
-  color: $beige;
+  color: #fff;
   width: rem(60px);
   height: rem(45px);
   display: inline-flex;
@@ -600,7 +601,7 @@
   right: 20px;
   top: 30%;
   z-index: 1;
-  color: $beige;
+  color: #fff;
   padding: rem($unit/2.5) rem($unit-small);
   font-size: rem(20px);
 
