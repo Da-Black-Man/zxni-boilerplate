@@ -12,7 +12,7 @@ export default class extends module {
       this.cursor = new Cursor({
         outerCursor: '.o-cursor-circle__outer',
         innerCursor: '.o-cursor-circle__inner',
-        showCursor: true
+        showCursor: false
       });
     }
 

@@ -4,7 +4,7 @@
   "description": "Frontend project based on webpack.",
   "scripts": {
     "build": "webpack --config webpack/webpack.config.prod.js  --colors",
-    "dev": "webpack-dev-server --open --config webpack/webpack.config.dev.js"
+    "dev": "webpack-dev-server --config webpack/webpack.config.dev.js"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
   "author": "zxni",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.4.5",
+    "@babel/core": "^7.5.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.4.5",
@@ -47,11 +47,10 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
-    "abortcontroller-polyfill": "^1.3.0",
     "core-js": "^3.1.4",
     "gsap": "^2.1.3",
-    "locomotive-scroll": "^3.0.5",
-    "modujs": "*",
+    "locomotive-scroll": "^3.1.5",
+    "modujs": "^1.3.0",
     "modularload": "*",
     "normalize.css": "*",
     "regenerator-runtime": "^0.13.3",
