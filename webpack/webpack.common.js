@@ -1,5 +1,5 @@
 const Path = require('path');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -12,12 +12,27 @@ module.exports = {
     filename: 'scripts/[name].js'
   },
   optimization: {
-    minimize: false,
+    minimize: true,
     splitChunks: {
-      chunks: 'all',
-      name: false
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all",
+          enforce: true
+        }
+      },
+      chunks: "all"
     }
+    // splitChunks: {
+    //   chunks: 'all',
+    //   name: false
+    // },
+    // runtimeChunk: {
+    //   name: "runtime"
+    // }
   },
+
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
@@ -48,7 +63,7 @@ module.exports = {
         type: 'javascript/auto'
       },
       {
-        test: /\.(html)$/,
+        test: /\.html$/,
         use: {
           loader: 'html-loader',
           options: {

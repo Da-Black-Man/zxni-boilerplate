@@ -1,4 +1,4 @@
-import { TweenMax } from 'gsap/TweenMax';
+import { gsap } from "gsap";
 
 export const DEFAULTS = {
   outerCursor: '.o-cursor-circle__outer',
@@ -14,10 +14,8 @@ export default class {
     this.showCursor = options.showCursor || DEFAULTS.showCursor;
 
 
-    const { Back } = window;
     this.outerCursorBox = this.outerCursor.getBoundingClientRect();
     this.outerCursorSpeed = 0;
-    this.easing = Back.easeInOut.config(1.7);
     this.clientX = -100;
     this.clientY = -100;
     this.activeCursor = false;
@@ -42,11 +40,11 @@ export default class {
   initCursor() {
     document.documentElement.classList.add('has-custom-cursor');
     const unveilCursor = () => {
-      TweenMax.set(this.innerCursor, {
+      gsap.set(this.innerCursor, {
         x: this.clientX,
         y: this.clientY
       });
-      TweenMax.set(this.outerCursor, {
+      gsap.set(this.outerCursor, {
         x: this.clientX - this.outerCursorBox.width / 2,
         y: this.clientY - this.outerCursorBox.height / 2
       });
@@ -63,12 +61,12 @@ export default class {
     });
 
     const render = () => {
-      TweenMax.set(this.innerCursor, {
+      gsap.set(this.innerCursor, {
         x: this.clientX,
         y: this.clientY
       });
       if (!this.isStuck) {
-        TweenMax.to(this.outerCursor, this.outerCursorSpeed, {
+        gsap.to(this.outerCursor, this.outerCursorSpeed, {
           x: this.clientX - this.outerCursorBox.width / 2,
           y: this.clientY - this.outerCursorBox.height / 2
         });
@@ -83,17 +81,17 @@ export default class {
 
   initHovers() {
 
-    const LinkItems = TweenMax.to(this.outerCursor, 0.5, {
+    const LinkItems = gsap.to(this.outerCursor, 0.5, {
       backgroundColor: "#000000",
       scale: 0.3,
       opacity: 1,
-      ease: this.easing,
+      ease: "back",
       paused: true
     });
 
     const handleMouseEnter = () => {
       this.outerCursorSpeed = 0;
-      TweenMax.set(this.innerCursor, {
+      gsap.set(this.innerCursor, {
         opacity: 0
       });
       LinkItems.play();
@@ -101,7 +99,7 @@ export default class {
 
     const handleMouseLeave = () => {
       this.outerCursorSpeed = 0.2;
-      TweenMax.set(this.innerCursor, {
+      gsap.set(this.innerCursor, {
         opacity: 1
       });
       LinkItems.reverse();

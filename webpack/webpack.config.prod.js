@@ -10,8 +10,8 @@ module.exports = merge(common, {
   stats: 'errors-only',
   bail: true,
   output: {
-    filename: 'assets/scripts/[name].js',
-    chunkFilename: 'assets/scripts/vendor.js'
+    filename: 'assets/scripts/[name].bundle.js',
+    chunkFilename: 'assets/scripts/[name].chunk.js'
   },
   plugins: [
     new Webpack.DefinePlugin({
@@ -19,15 +19,15 @@ module.exports = merge(common, {
     }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/bundle.css',
-      chunkFilename: 'assets/css/vendor.css'
+      filename: 'assets/css/[name].bundle.css',
+      chunkFilename: 'assets/css/[name].chunk.css'
 
     })
   ],
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       },
@@ -35,7 +35,10 @@ module.exports = merge(common, {
         test: /\.s?css/i,
         use : [
           MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { url: false, sourceMap: true } },
+          {
+            loader: 'css-loader',
+            options: { url: false, sourceMap: true }
+          },
           {
             loader: 'postcss-loader',
             options: {
