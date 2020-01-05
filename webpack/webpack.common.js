@@ -2,6 +2,10 @@ const Path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserJSPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
+
 
 module.exports = {
   entry: {
@@ -12,7 +16,8 @@ module.exports = {
     filename: 'scripts/[name].js'
   },
   optimization: {
-    minimize: true,
+    // minimize: true,
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -80,7 +85,8 @@ module.exports = {
             name: '[name].[ext]',
             useRelativePath: true,
             outputPath: 'assets/images',
-            publicPath: ''
+            publicPath: '',
+            esModule: false
           }
         }]
       },
@@ -92,7 +98,8 @@ module.exports = {
             name: '[name].[ext]',
             useRelativePath: true,
             outputPath: 'assets/fonts',
-            publicPath: ''
+            publicPath: '',
+            esModule: false
           }
         }]
       }

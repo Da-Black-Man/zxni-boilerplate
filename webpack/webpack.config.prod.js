@@ -6,6 +6,7 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'production',
+  // devtool: false,
   devtool: 'source-map',
   stats: 'errors-only',
   bail: true,
@@ -35,10 +36,7 @@ module.exports = merge(common, {
         test: /\.s?css/i,
         use : [
           MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: { url: false, sourceMap: true }
-          },
+          'css-loader',
           {
             loader: 'postcss-loader',
             options: {
@@ -49,7 +47,7 @@ module.exports = merge(common, {
               }
             }
           },
-          { loader: 'sass-loader', options: { sourceMap: true } }
+          'sass-loader'
         ]
       }
     ]
