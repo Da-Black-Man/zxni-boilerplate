@@ -51,12 +51,11 @@
   "dependencies": {
     "core-js": "^3.6.1",
     "gsap": "^3.0.4",
-    "locomotive-scroll": "^3.2.7",
+    "locomotive-scroll": "*",
     "modujs": "*",
-    "modularload": "^1.2.4",
+    "modularload": "*",
     "normalize.css": "*",
     "regenerator-runtime": "^0.13.3",
-    "svg4everybody": "*",
-    "virtual-scroll": "*"
+    "svg4everybody": "*"
   }
 }

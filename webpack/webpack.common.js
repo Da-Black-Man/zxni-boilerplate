@@ -54,6 +54,12 @@ module.exports = {
       filename: 'page.html',
       minify:  false,
       template: Path.resolve(__dirname, '../src/page.html')
+    }),
+    new HtmlWebpackPlugin({
+      title: 'Image | Boilerplate',
+      filename: 'image.html',
+      minify:  false,
+      template: Path.resolve(__dirname, '../src/image.html')
     })
   ],
   resolve: {
