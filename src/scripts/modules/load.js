@@ -1,5 +1,5 @@
 import { module } from 'modujs';
-import modularLoad from 'modularload';
+import modularLoad from '../modularLoad';
 
 export default class extends module {
     constructor(m) {
@@ -9,6 +9,7 @@ export default class extends module {
     init() {
         const load = new modularLoad({
             enterDelay: 3000,
+            isSPA: true,
             transitions: {
                 customTransition: {}
             }
