@@ -17,7 +17,17 @@ module.exports = {
   },
   optimization: {
     // minimize: true,
-    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})],
+    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({
+      assetNameRegExp: /\.optimize\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorPluginOptions: {
+        preset: ['default', {
+          discardComments: { removeAll: true },
+          minifyFontValues: { removeQuotes: false }
+        }],
+      },
+      canPrint: true
+    })],
     splitChunks: {
       cacheGroups: {
         vendor: {
