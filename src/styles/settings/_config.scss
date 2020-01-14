@@ -13,7 +13,7 @@ $assets-path: "../"  !default;
 // Typefaces
 // =============================================================================
 $font-sans-serif: sans-serif;
-// $font-foobar: 'foobar';
+$font-euclid: 'EuclidFlex';
 
 
 // Typography
@@ -21,7 +21,7 @@ $font-sans-serif: sans-serif;
 // Base
 $font-size:   16px;
 $line-height: 24px / $font-size;
-$font-family: $font-sans-serif;
+$font-family: $font-euclid, $font-sans-serif;
 $color:       #222222;
 // Headings
 $font-size-h1:  36px  !default;

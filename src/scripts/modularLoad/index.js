@@ -243,7 +243,7 @@ export default class {
       })
       .catch(err => {
         console.log(err);
-      })
+      });
 
     if (push) {
       history.pushState(this.transition, null, href);
@@ -336,7 +336,7 @@ export default class {
           if (attr == 'src' || attr == 'srcset') {
             const promise = new Promise(resolve => {
               el.onload = () => resolve(el);
-            })
+            });
             promises.push(promise);
           }
         });
