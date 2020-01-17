@@ -42,6 +42,10 @@ module.exports = {
     //   chunks: 'all',
     //   name: false
     // },
+
+    // TODO: Figure out why prod app.js shows app.chunck.js when runtimeChunck is enabled....
+
+
     runtimeChunk: {
       name: "runtime"
     }
