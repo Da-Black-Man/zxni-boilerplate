@@ -16,8 +16,7 @@ module.exports = {
     filename: 'scripts/[name].js'
   },
   optimization: {
-    // minimize: true,
-    minimizer: [new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({
+    minimizer: [new TerserJSPlugin(), new OptimizeCSSAssetsPlugin({
       assetNameRegExp: /\.optimize\.css$/g,
       cssProcessor: require('cssnano'),
       cssProcessorPluginOptions: {
@@ -32,20 +31,20 @@ module.exports = {
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: "vendor",
+          name: "vendors",
           chunks: "all",
           enforce: true
         }
       },
       chunks: "all"
-    }
+    },
     // splitChunks: {
     //   chunks: 'all',
     //   name: false
     // },
-    // runtimeChunk: {
-    //   name: "runtime"
-    // }
+    runtimeChunk: {
+      name: "runtime"
+    }
   },
 
   plugins: [

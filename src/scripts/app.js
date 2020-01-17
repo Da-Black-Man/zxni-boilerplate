@@ -1,10 +1,6 @@
 import 'normalize.css';
 import '../styles/main.scss';
 
-// USE ENTRY BABEL
-// import "core-js/stable";
-// import "regenerator-runtime/runtime";
-
 import modular from 'modujs';
 import * as modules from './modules';
 import globals from './globals';
