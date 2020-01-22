@@ -3,9 +3,8 @@ import '../styles/main.scss';
 
 // @todo Look into pollyfill if this is correct placement
 
- // import "core-js/stable";
+// import "core-js/stable";
 // import "regenerator-runtime/runtime";
-
 // import 'abortcontroller-polyfill/dist/abortcontroller-polyfill-only';
 
 import modular from 'modujs';
