@@ -19,6 +19,10 @@ html {
   font-family: $font-family;
   line-height: $line-height; /* [1] */
 
+  ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+
   @media (max-width: $to-small) {
       font-size: 12px;
   }
