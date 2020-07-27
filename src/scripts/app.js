@@ -21,8 +21,6 @@ class Zxni {
   constructor() {
     html.classList.add('is-loading');
     window.addEventListener('load',() => {
-      html.classList.add('is-loaded', 'is-ready');
-      html.classList.remove('is-loading');
       this.init();
     });
   }
@@ -33,6 +31,8 @@ class Zxni {
     });
     app.init(app);
     globals();
+    html.classList.add('is-loaded', 'is-ready');
+    html.classList.remove('is-loading');
   }
 
 }
