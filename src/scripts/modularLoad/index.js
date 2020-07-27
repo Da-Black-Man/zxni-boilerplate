@@ -2,6 +2,7 @@ export default class {
   constructor(options) {
     this.defaults = {
       name: 'load',
+      isSPA: true,
       loadingClass: 'is-loading',
       loadedClass: 'is-loaded',
       readyClass: 'is-ready',
@@ -14,7 +15,7 @@ export default class {
       isEntered: false,
       isUrl: false,
       transitionContainer: null,
-      popstateIgnore: false
+      // popstateIgnore: true
     };
 
     Object.assign(this, this.defaults, options);
@@ -40,9 +41,10 @@ export default class {
   }
 
   init() {
-
-    window.addEventListener('popstate', (e) => this.checkState(e), false);
-    this.html.addEventListener('click', (e) => this.checkClick(e), false);
+    if (this.isSPA) {
+      window.addEventListener('popstate', (e) => this.checkState(e), false);
+      this.html.addEventListener('click', (e) => this.checkClick(e), false);
+    }
 
     this.loadEls(document);
   }
@@ -71,9 +73,9 @@ export default class {
   }
 
   checkState() {
-    if ((typeof this.popstateIgnore === 'string') && window.location.href.indexOf(this.popstateIgnore) > -1) {
-      return;
-    }
+    // if ((typeof this.popstateIgnore === 'string') && window.location.href.indexOf(this.popstateIgnore) > -1) {
+    //   return;
+    // }
     this.reset();
     this.getStateOptions();
   }
