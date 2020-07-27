@@ -2,7 +2,6 @@ export default class {
   constructor(options) {
     this.defaults = {
       name: 'load',
-      isSPA: true,
       loadingClass: 'is-loading',
       loadedClass: 'is-loaded',
       readyClass: 'is-ready',
@@ -14,7 +13,8 @@ export default class {
       isLoaded: false,
       isEntered: false,
       isUrl: false,
-      transitionContainer: null
+      transitionContainer: null,
+      popstateIgnore: false
     };
 
     Object.assign(this, this.defaults, options);
@@ -40,10 +40,9 @@ export default class {
   }
 
   init() {
-    if (this.isSPA) {
-      window.addEventListener('popstate', (e) => this.checkState(e), false);
-      this.html.addEventListener('click', (e) => this.checkClick(e), false);
-    }
+
+    window.addEventListener('popstate', (e) => this.checkState(e), false);
+    this.html.addEventListener('click', (e) => this.checkClick(e), false);
 
     this.loadEls(document);
   }
@@ -72,6 +71,9 @@ export default class {
   }
 
   checkState() {
+    if ((typeof this.popstateIgnore === 'string') && window.location.href.indexOf(this.popstateIgnore) > -1) {
+      return;
+    }
     this.reset();
     this.getStateOptions();
   }
@@ -218,6 +220,10 @@ export default class {
       })
       .then(response => response.text())
       .then(data => {
+        if (push) {
+          history.pushState(this.transition, null, href);
+        }
+
         const parser = new DOMParser();
         this.data = parser.parseFromString(data, 'text/html');
 
@@ -242,12 +248,8 @@ export default class {
         this.isLoading = false;
       })
       .catch(err => {
-        console.log(err);
+        window.location = href;
       });
-
-    if (push) {
-      history.pushState(this.transition, null, href);
-    }
   }
 
   transitionContainers() {
