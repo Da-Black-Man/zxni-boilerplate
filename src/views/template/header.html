@@ -1,8 +1,83 @@
-<header>
-  <nav>
-    <ul>
-      <li><a href="page.html">Page</a></li>
-      <li><a href="index.html" data-load="customTransition">Custom Home</a></li>
-    </ul>
-  </nav>
+<div class="__line">
+  <div class="o-line -v -l"></div>
+  <div class="o-line -v -r"></div>
+</div>
+
+<header
+  class="c-header-navigation u-anime -delay-4"
+  id="main__menu"
+  data-module-navigation
+>
+  <div class="c-header-navigation__content">
+    <a class="c-header-navigation__logo" href="/" target="_blank">
+      <svg class="c-header-navigation__logo--desktop" role="img">
+        <use xlink:href="#svg-logo"></use>
+      </svg>
+      <svg class="c-header-navigation__logo--mobile" role="img">
+        <use xlink:href="#svg-logo-mobile"></use>
+      </svg>
+    </a>
+    <nav class="c-header-navigation__nav">
+      <ul class="c-header-navigation__list">
+        <li class="c-header-navigation__item">
+          <a class="c-header-navigation__link" href="/"> Overview</a>
+        </li>
+        <li class="c-header-navigation__item">
+          <a class="c-header-navigation__link" href="/">page 1</a>
+        </li>
+        <li class="c-header-navigation__item">
+          <a class="c-header-navigation__link" href="/">Page 2</a>
+        </li>
+
+        <li class="c-header-navigation__item -last">
+          <a class="c-header-navigation__link -cta-btn" href="/">
+            Button
+            <span class="c-header-navigation__link-icon o-button__icon">
+              <svg>
+                <use xlink:href="#svg-search"></use>
+              </svg>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="c-header-navigation__menu">
+      <div class="c-header-navigation__menu-wrap u-vertical-center">
+        <button
+          class="c-header-navigation__button"
+          type="button"
+          aria-label="menu button"
+        >
+          <span class="c-header-navigation__button-line"></span>
+          <span class="c-header-navigation__button-line"></span>
+          <span class="c-header-navigation__button-line"></span>
+        </button>
+      </div>
+    </div>
+    <div id="c-mega-menu" class="c-mega-menu">
+      <div class="c-mega-menu__wrap">
+        <ul
+          data-menu="main"
+          class="c-mega-menu__level"
+          tabindex="-1"
+          role="menu"
+          aria-label="All"
+        >
+          <li class="c-mega-menu__item" role="menuitem">
+            <a class="c-mega-menu__item-link" href="/">Link</a>
+          </li>
+          <li class="c-mega-menu__item" role="menuitem">
+            <a class="c-mega-menu__item-link" href="/">Link</a>
+          </li>
+          <li class="c-mega-menu__item" role="menuitem">
+            <a class="c-mega-menu__item-link" href="/">Link</a>
+          </li>
+          <li class="c-mega-menu__item" role="menuitem">
+            <a class="c-mega-menu__item-link" href="/">Page</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="o-overlay"></div>
 </header>

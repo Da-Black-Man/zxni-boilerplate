@@ -14,22 +14,23 @@
 
 /* stylelint-disable */
 @if (type-of($container-width) != number) {
-    @error "`#{$container-width}` needs to be a number.";
+  @error "`#{$container-width}` needs to be a number.";
 }
 /* stylelint-enable */
 
 .o-container {
   margin-right: auto;
   margin-left: auto;
-  max-width: rem($container-width + (40px*2));
-
-  @media (max-width: $to-small) {
-      padding-right: 20px;
-      padding-left: 20px;
+  padding-right: 7vw;
+  padding-left: 7vw;
+  max-width: $container-width;
+  @media (min-width: $from-tiny) {
+    padding-right: 10vw;
+    padding-left: 10vw;
   }
 
   @media (min-width: $from-small) {
-      padding-right: rem(40px);
-      padding-left: rem(40px);
+    padding-right: $padding;
+    padding-left: $padding;
   }
 }
