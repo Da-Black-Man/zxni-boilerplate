@@ -16,11 +16,6 @@
   </head>
 
   <body data-module-load>
-    <!-- Loader -->
-    <!------------>
-    <div class="o-loader">
-      <div class="o-loader__line"></div>
-    </div>
     <!-- Header -->
     <!------------>
     ${require('./views/template/header.html')}
@@ -28,13 +23,6 @@
     <!-- Main -->
     <!---------->
     <main data-load-container data-namespace="home" data-page="overview">
-      <!-- Cursor -->
-      <!------------>
-      <div class="o-cursor" data-module-cursor>
-        <div class="o-cursor-circle o-cursor-circle__inner"></div>
-        <div class="o-cursor-circle o-cursor-circle__outer"></div>
-      </div>
-
       <!-- Content -->
       <!------------->
       <div class="o-wrap">
@@ -48,7 +36,7 @@
                       class="o-background"
                       data-scroll
                       data-scroll-speed="-1"
-                      data-load-style="background-image: url('http://com.jobing.static.s3.amazonaws.com/company/sites/155752/assets/images/overview/01.jpg')"
+                      data-load-style="background-image: url('../assets/images/grid.svg')"
                     ></div>
                     <div class="c-main-hero__overlay" />
                   </div>
@@ -76,6 +64,23 @@
                             <p class="c-main-hero__subtitle-message">
                               A family-owned business since 1988!
                             </p>
+                            <a
+                              class="o-button"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href="/jobs"
+                            >
+                              <span class="o-button__inner">
+                                <span class="o-button__label"
+                                  >Search Jobs Now</span
+                                >
+                                <span class="o-button__icon">
+                                  <svg>
+                                    <use xlink:href="#svg-btn-arrow"></use>
+                                  </svg>
+                                </span>
+                              </span>
+                            </a>
                           </div>
                         </div>
                       </div>
@@ -172,16 +177,16 @@
               </div>
             </div>
           </section>
-
-          <!-- Footer -->
-          <!------------>
-          ${require('./views/template/footer.html')}
-          <!-- Sprite -->
-          <!------------>
-          ${require('./views/template/sprite.html')}
         </div>
       </div>
     </main>
+
+    <!-- Footer -->
+    <!------------>
+    ${require('./views/template/footer.html')}
+    <!-- Sprite -->
+    <!------------>
+    ${require('./views/template/sprite.html')}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 

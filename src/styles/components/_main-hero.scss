@@ -221,7 +221,6 @@
   }
 
   opacity: 0;
-  font-weight: 300;
   transform: translateY(-20%);
   transition: opacity, transform;
   transition-duration: 0.6s;
@@ -230,7 +229,7 @@
   display: block;
 
   @media (min-width: $from-large) {
-    width: 50%;
+    width: 70%;
   }
 
   &-content {
@@ -243,7 +242,6 @@
     margin: rem(30px) 0;
 
     @media (min-width: $from-medium) {
-      margin-right: 4vw;
       margin-top: 2.5rem;
     }
   }

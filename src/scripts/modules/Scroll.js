@@ -29,16 +29,17 @@ export default class extends module {
 
       this.scroll.on("scroll", (args) => {
         // console.log(args.scroll.y);
+        const scrollBottom = window.scrollY + window.innerHeight;
 
-        // args.scroll.y > 20
-        //   ? html.classList.add("has-scrolled")
-        //   : html.classList.remove("has-scrolled");
-        window.scrollY > 20
-          ? html.classList.add("has-scrolled")
-          : html.classList.remove("has-scrolled");
-        args.scroll.y > 300
-          ? html.classList.add("has-nav")
-          : html.classList.remove("has-nav");
+        window.scrollY > 300
+          ? html.classList.add("has-scrolled", "has-nav")
+          : html.classList.contains("has-scrolled", "has-nav") &&
+            html.classList.remove("has-scrolled", "has-nav");
+
+        scrollBottom > document.body.clientHeight - 100
+          ? html.classList.add("has-scrolled-bottom")
+          : html.classList.contains("has-scrolled-bottom") &&
+            html.classList.remove("has-scrolled-bottom");
       });
     }, 500);
   }

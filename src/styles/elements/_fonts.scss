@@ -2,35 +2,32 @@
 // Base / Fonts
 // ==========================================================================
 
-
-
 @include font-face(
-    $font-euclid,
-    "fonts/Euclid/EuclidFlex",
-    ("eot", "woff", "ttf", "svg")
+  $font-euclid,
+  "fonts/Euclid/EuclidFlex",
+  ("eot", "woff", "ttf")
 ) {
-    font-style:  normal;
-    font-weight: 400;
-    text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
 }
 
 @include font-face(
-    $font-euclid,
-    "fonts/Euclid/EuclidFlexBold",
-    ("eot", "woff", "ttf", "svg")
+  $font-euclid,
+  "fonts/Euclid/EuclidFlexBold",
+  ("eot", "woff", "ttf")
 ) {
-    font-style:  normal;
-    font-weight: 700;
-    text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
 }
 
 @include font-face(
-    $font-euclid,
-    "fonts/Euclid/EuclidFlexLight",
-    ("eot", "woff", "ttf", "svg")
+  $font-euclid,
+  "fonts/Euclid/EuclidFlexLight",
+  ("eot", "woff", "ttf")
 ) {
-    font-style:  normal;
-    font-weight: 300;
-    text-rendering: optimizeLegibility;
+  font-style: normal;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
 }
-

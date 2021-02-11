@@ -46,3 +46,12 @@
     }
   }
 }
+
+.progress {
+  background: linear-gradient(to right, $accent var(--scroll), transparent 0);
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
+  height: 4px;
+  z-index: 999999;
+}

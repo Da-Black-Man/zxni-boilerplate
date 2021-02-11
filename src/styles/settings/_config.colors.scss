@@ -7,29 +7,29 @@
 $white: #ffffff;
 $black: #000000;
 
-$accent: #ff0096;
-$accent-2: #00b1dd;
+$accent: #cf1f3d;
+$accent-2: #024985;
 $accent-3: #b500ff;
 
-$dark-bg: #191c24;
+$dark-bg: #051930;
 
 $gray-1: #4a4a4a;
 $gray-2: #9b9b9b;
 $gray-3: #eeeeee;
 
-$footer-bg: #131123;
-$bg: #131123;
-$bg-body: #17152f;
+$footer-bg: #051930;
+$bg: #051930;
+$bg-body: #fff;
 
 // Specific
 // =============================================================================
 // Link
-$link-color: #1a0dab;
-$link-focus-color: #1a0dab;
-$link-hover-color: darken(#1a0dab, 10%);
+$link-color: $accent;
+$link-focus-color: $accent;
+$link-hover-color: darken($accent, 10%);
 // Selection
 $selection-text-color: $white;
-$selection-background-color: pink;
+$selection-background-color: lighten($accent, 10%);
 
 // Social Colors
 // =============================================================================

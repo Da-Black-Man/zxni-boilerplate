@@ -112,10 +112,19 @@
     }
   }
 
+  &.has-nav {
+    .o-line {
+      opacity: 0;
+    }
+  }
+
   &.has-scrolled-bottom {
     .__back-to {
       opacity: 1;
       transform: translateY(-30px);
+    }
+    .o-line {
+      opacity: 0.5;
     }
   }
 
