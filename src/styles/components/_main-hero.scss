@@ -330,7 +330,7 @@
     position: absolute;
     width: 9rem;
     right: 0;
-    bottom: 3rem;
+    bottom: rem(60px);
     height: auto;
     display: block;
   }
@@ -429,7 +429,7 @@
     position: absolute;
     left: 0;
     width: 9rem;
-    bottom: 6rem;
+    bottom: rem(300px);
     height: auto;
     display: block;
     z-index: 1;

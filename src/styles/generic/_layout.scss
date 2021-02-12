@@ -1,0 +1,44 @@
+.l-layout {
+  &__content {
+    &-sub {
+      font-size: rem(12px);
+      position: relative;
+      display: flex;
+      align-items: center;
+      margin-bottom: rem(10px);
+      &::after {
+        content: "";
+        margin-left: rem(10px);
+        background-color: $accent;
+        display: block;
+        width: rem(90px);
+        height: 3px;
+      }
+    }
+    &-title {
+      .-dark & {
+        color: #fff;
+      }
+      font-size: rem(34px);
+      font-family: $font-title;
+      font-weight: bold;
+      margin-bottom: rem(25px);
+      line-height: normal;
+      color: #051930;
+
+      .-period {
+        color: $accent;
+      }
+    }
+
+    &-text {
+      .-dark & {
+        color: #fff;
+      }
+      line-height: 2;
+      font-weight: normal;
+
+      margin-bottom: rem(10px);
+    }
+  }
+}

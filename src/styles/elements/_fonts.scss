@@ -31,3 +31,45 @@
   font-weight: 300;
   text-rendering: optimizeLegibility;
 }
+@include font-face(
+  $font-montserrat,
+  "fonts/Montserrat/Montserrat-Bold",
+  ("eot", "woff", "ttf")
+) {
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
+  font-display: swap;
+}
+
+@include font-face(
+  $font-montserrat,
+  "fonts/Montserrat/Montserrat-SemiBold",
+  ("eot", "woff", "ttf")
+) {
+  font-style: normal;
+  font-weight: 600;
+  text-rendering: optimizeLegibility;
+  font-display: swap;
+}
+
+@include font-face(
+  $font-montserrat,
+  "fonts/Montserrat/Montserrat-Regular",
+  ("eot", "woff", "ttf")
+) {
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+  font-display: swap;
+}
+
+@include font-face(
+  $font-icon,
+  "fonts/custom-icons/custom-icons",
+  ("eot", "woff2", "woff", "ttf")
+) {
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}

@@ -1,0 +1,37 @@
+.c-hero-slider {
+  position: relative;
+  margin-top: rem(-150px);
+  overflow: hidden;
+
+  &__main {
+    position: relative;
+    height: rem(250px);
+    overflow: hidden;
+
+    @media (min-width: $from-small) {
+      width: calc(100% - 9rem);
+      height: rem(500px);
+    }
+  }
+
+  &__arrow {
+    display: block;
+    @media (min-width: $from-small) {
+      position: absolute;
+      right: 9rem;
+      bottom: 0;
+      z-index: 1;
+    }
+
+    .slider-arrow-wrap {
+      @media (max-width: $to-small) {
+        width: 100%;
+      }
+    }
+    .slider-arrow {
+      @media (max-width: $to-small) {
+        width: 50%;
+      }
+    }
+  }
+}

@@ -2,6 +2,12 @@
 // Objects / Buttons
 // ==========================================================================
 .o-button {
+  &.-dark {
+    color: $bg;
+    &:hover {
+      color: $bg;
+    }
+  }
   padding: 0 0 0 rem(25px);
   margin-top: rem(25px);
   border-radius: rem(30px);
@@ -13,6 +19,7 @@
   position: relative;
   &:hover {
     color: #fff;
+
     .o-button__icon {
       background-color: $accent-2;
     }

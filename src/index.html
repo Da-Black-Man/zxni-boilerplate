@@ -15,18 +15,23 @@
     <link rel="icon" href="assets/images/favicons/favicon.png" />
   </head>
 
-  <body data-module-load>
+  <body>
     <!-- Header -->
     <!------------>
     ${require('./views/template/header.html')}
 
     <!-- Main -->
     <!---------->
-    <main data-load-container data-namespace="home" data-page="overview">
+    <main
+      data-module-load
+      data-load-container
+      data-namespace="home"
+      data-page="overview"
+    >
       <!-- Content -->
       <!------------->
       <div class="o-wrap">
-        <div class="o-scroll" data-module-scroll>
+        <div class="o-scroll" data-module-scroll="main">
           <section data-component="main-hero" data-scroll-section>
             <div class="c-main-hero">
               <div class="c-main-hero__inner">
@@ -53,9 +58,10 @@
                       >
                         <h1 class="c-main-hero__title">
                           <span class="c-main-hero__title-inner">
-                            The Complete Logistics Company Careers
-
-                            <span class="-period">.</span>
+                            The Complete Logistics Company Careers<span
+                              class="-period"
+                              >.</span
+                            >
                             <span class="c-main-hero__title-bg" />
                           </span>
                         </h1>
@@ -177,13 +183,294 @@
               </div>
             </div>
           </section>
+          <section data-component="hero-slider" data-scroll-section>
+            <div class="c-hero-slider">
+              <div class="c-hero-slider__inner">
+                <div class="c-hero-slider__main">
+                  <div class="c-hero-slider__item">
+                    <div
+                      class="c-hero-slider__gallery o-reveal"
+                      data-scroll
+                      data-scroll-class="is-reveal"
+                      data-scroll-offset="50"
+                    >
+                      <div
+                        class="o-background"
+                        data-scroll
+                        data-scroll-speed="-1"
+                        data-scroll-position="middle"
+                      >
+                        <div
+                          class="o-background__image-full"
+                          data-scroll
+                          data-scroll-call="toggleLazy, Scroll, main"
+                          data-scroll-lazy="assets/images/home/slider/1.jpg"
+                        ></div>
+                      </div>
+                      <div class="o-reveal__background-reveal"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="c-hero-slider__arrow">
+                  <div class="slider-arrow-wrap slider-arrow-wrap-dark">
+                    <div
+                      class="slider-arrow slider-arrow-l slider-arrow-common"
+                      data-direction="-1"
+                    >
+                      <div class="slider-arrow-svg">
+                        <svg>
+                          <use xlink:href="#svg-slider-arrow-l"></use>
+                        </svg>
+                      </div>
+                      <div class="slider-arrow-line-wrap _oh">
+                        <div class="slider-arrow-line"></div>
+                      </div>
+                    </div>
+                    <div
+                      class="slider-arrow slider-arrow-r slider-arrow-common"
+                      data-direction="1"
+                    >
+                      <div class="slider-arrow-svg">
+                        <svg>
+                          <use xlink:href="#svg-slider-arrow-r"></use>
+                        </svg>
+                      </div>
+                      <div class="slider-arrow-line-wrap _oh">
+                        <div class="slider-arrow-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-component="banner" data-scroll-section>
+            <div class="c-banner">
+              <div class="o-container">
+                <div class="o-layout">
+                  <div class="c-banner__content">
+                    <img
+                      src="assets/images/home/banner.png"
+                      alt="The Complete Logistics Company Logo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-component="image info" data-scroll-section>
+            <div class="c-image-info -spacer">
+              <div class="o-container">
+                <div class="c-image-info__inner">
+                  <div class="c-image-info__layout o-layout -flex -middle">
+                    <div
+                      class="c-image-info__layout-item o-layout__item u-1/1 u-1/2@medium"
+                    >
+                      <div class="l-layout__content">
+                        <span class="l-layout__content-sub">01.</span>
+                        <h2 class="l-layout__content-title">
+                          Join our team<span class="-period">.</span>
+                        </h2>
+
+                        <p class="l-layout__content-text">
+                          For more than 30 years, we’ve supported clients
+                          ranging from small businesses to Fortune 100 companies
+                          - providing them customized and cutting-edge services.
+                          We are located throughout California, Arizona and
+                          Nevada. At CLC, we are focused on safety, family, and
+                          making a positive difference in our communities. We’re
+                          hiring motivated individuals with a desire to learn
+                          new things and be part of a successful company.
+                          Whether you’re working in the warehouse or behind the
+                          wheel, CLC has opportunities for you. We welcome you
+                          to discover more about what it’s like to work here and
+                          apply today!
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="c-image-info__layout-item o-layout__item u-1/1 u-1/2@medium"
+                    >
+                      <div
+                        class="c-image-info__background o-reveal"
+                        data-scroll
+                        data-scroll-class="is-reveal"
+                        data-scroll-offset="0.3"
+                      >
+                        <div
+                          class="o-background"
+                          data-scroll
+                          data-scroll-speed="-1"
+                          data-position="middle"
+                        >
+                          <div
+                            class="o-background__image-full"
+                            data-scroll
+                            data-scroll-call="toggleLazy, Scroll, main"
+                            data-scroll-lazy="assets/images/home/2.jpg"
+                          ></div>
+                        </div>
+
+                        <div class="o-reveal__background-reveal"></div>
+                      </div>
+
+                      <div class="c-image-info__cta">
+                        <div class="c-image-info__cta-content">
+                          <p>
+                            Discover More about what it's like to work here and
+                            apply today!
+                          </p>
+                          <a
+                            class="o-button"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="/jobs"
+                          >
+                            <span class="o-button__inner">
+                              <span class="o-button__label"
+                                >Search Jobs Now</span
+                              >
+                              <span class="o-button__icon">
+                                <svg>
+                                  <use xlink:href="#svg-btn-arrow"></use>
+                                </svg>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-component="our opportunites" data-scroll-section>
+            <div class="c-job-cards">
+              <div class="o-container">
+                <div class="c-job-cards__inner">
+                  <div class="c-job-cards__heading">
+                    <div class="l-layout__content">
+                      <span class="l-layout__content-sub">02.</span>
+                      <h2 class="l-layout__content-title">
+                        Explore our opportunites<span class="-period">.</span>
+                      </h2>
+                    </div>
+                  </div>
+
+                  <div class="c-job-cards__callout">
+                    <div class="c-job-cards__callout-item">
+                      <div class="c-job-cards__callout-image">
+                        <div
+                          class="o-background"
+                          data-scroll
+                          data-scroll-speed="-1"
+                          data-position="middle"
+                          data-scroll-call="toggleLazy, Scroll, main"
+                          data-scroll-lazy="assets/images/home/driver-cta.jpg"
+                        ></div>
+                      </div>
+                      <div class="c-job-cards__callout-content">
+                        <div class="c-job-cards__callout-content-inner">
+                          <h3
+                            class="c-job-cards__callout-content-title o-h3 --blue"
+                          >
+                            Driver Jobs
+                          </h3>
+                          <div class="c-job-cards__callout-content-cta">
+                            <p class="l-layout__content-text">
+                              Discover a truck driver career that fits your
+                              lifestyle with excellent benefits and growth
+                              potential.
+                            </p>
+                            <a
+                              class="c-job-cards__callout-content-cta--link o-button -dark"
+                              href="/driver"
+                            >
+                              <span class="o-button__inner">
+                                <span class="o-button__label">
+                                  Learn More
+                                </span>
+                                <span class="o-button__icon">
+                                  <svg>
+                                    <use xlink:href="#svg-btn-arrow"></use>
+                                  </svg>
+                                </span>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="c-job-cards__callout-content-icon">
+                            <svg>
+                              <use xlink:href="#svg-truck"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="c-job-cards__callout-item">
+                      <div class="c-job-cards__callout-image">
+                        <div
+                          class="o-background"
+                          data-scroll
+                          data-scroll-speed="-1"
+                          data-position="middle"
+                          data-scroll-call="toggleLazy, Scroll, main"
+                          data-scroll-lazy="assets/images/home/warehouse-cta.jpg"
+                        ></div>
+                      </div>
+                      <div class="c-job-cards__callout-content">
+                        <div class="c-job-cards__callout-content-inner">
+                          <h3
+                            class="c-job-cards__callout-content-title o-h3 --pink"
+                          >
+                            Warehouse Jobs
+                          </h3>
+                          <div class="c-job-cards__callout-content-cta">
+                            <p class="l-layout__content-text">
+                              Our warehouse team performs important tasks that
+                              allow us to stay fully committed to our clients.
+                            </p>
+                            <a
+                              class="c-job-cards__callout-content-cta--link o-button -dark"
+                              href="/warehouse"
+                            >
+                              <span class="o-button__inner">
+                                <span class="o-button__label">
+                                  Learn More
+                                </span>
+                                <span class="o-button__icon">
+                                  <svg>
+                                    <use xlink:href="#svg-btn-arrow"></use>
+                                  </svg>
+                                </span>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="c-job-cards__callout-content-icon">
+                            <svg>
+                              <use xlink:href="#svg-warehouse"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <!------------>
+          ${require('./views/template/footer.html')}
         </div>
       </div>
     </main>
 
-    <!-- Footer -->
-    <!------------>
-    ${require('./views/template/footer.html')}
     <!-- Sprite -->
     <!------------>
     ${require('./views/template/sprite.html')}
