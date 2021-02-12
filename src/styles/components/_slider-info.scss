@@ -25,12 +25,20 @@
     position: relative;
   }
 
+  &__gallery {
+    height: 15rem;
+    @media (min-width: $from-small) {
+      height: rem(360px);
+    }
+  }
+
   &__main {
     position: relative;
     overflow: hidden;
     width: calc(100% + 14vw);
     left: -7vw;
-    height: 15rem;
+    // height: 15rem;
+
     z-index: 999;
     @media (min-width: $from-tiny) {
       width: calc(100% + 20vw);
@@ -40,7 +48,7 @@
     @media (min-width: $from-small) {
       width: calc(100% + 18rem);
       left: -9rem;
-      height: rem(360px);
+      // height: rem(360px);
     }
     @media (min-width: $from-medium) {
       width: 100%;

@@ -23,6 +23,7 @@
     <!-- Main -->
     <!---------->
     <main
+      id="main"
       data-module-load
       data-load-container
       data-namespace="home"
@@ -72,9 +73,9 @@
                             </p>
                             <a
                               class="o-button"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              href="/jobs"
+                              data-scroll
+                              data-scroll-to
+                              href="#list"
                             >
                               <span class="o-button__inner">
                                 <span class="o-button__label"
@@ -94,7 +95,12 @@
                   </div>
                 </div>
                 <div class="__scroll u-anime -delay-4">
-                  <a class="scroll-wrap" href="#intro">
+                  <a
+                    class="scroll-wrap"
+                    data-scroll
+                    data-scroll-to
+                    href="#intro"
+                  >
                     <div class="scroll-text">Scroll to explore.</div>
                     <div class="scroll-arrow">
                       <svg>
@@ -183,10 +189,37 @@
               </div>
             </div>
           </section>
-          <section data-component="hero-slider" data-scroll-section>
+          <section
+            data-component="hero-slider"
+            data-scroll-section
+            data-module-heroslider
+          >
             <div class="c-hero-slider">
               <div class="c-hero-slider__inner">
-                <div class="c-hero-slider__main">
+                <div class="c-hero-slider__main owl-carousel">
+                  <div class="c-hero-slider__item">
+                    <div
+                      class="c-hero-slider__gallery o-reveal"
+                      data-scroll
+                      data-scroll-class="is-reveal"
+                      data-scroll-offset="50"
+                    >
+                      <div
+                        class="o-background"
+                        data-scroll
+                        data-scroll-speed="-1"
+                        data-scroll-position="middle"
+                      >
+                        <div
+                          class="o-background__image-full"
+                          data-scroll
+                          data-scroll-call="toggleLazy, Scroll, main"
+                          data-scroll-lazy="assets/images/home/slider/1.jpg"
+                        ></div>
+                      </div>
+                      <div class="o-reveal__background-reveal"></div>
+                    </div>
+                  </div>
                   <div class="c-hero-slider__item">
                     <div
                       class="c-hero-slider__gallery o-reveal"
@@ -260,7 +293,7 @@
             </div>
           </section>
 
-          <section data-component="image info" data-scroll-section>
+          <section data-component="image info" data-scroll-section id="intro">
             <div class="c-image-info -spacer">
               <div class="o-container">
                 <div class="c-image-info__inner">
@@ -464,7 +497,11 @@
             </div>
           </section>
 
-          <section data-component="expect at clc" data-scroll-section>
+          <section
+            data-component="expect at clc"
+            data-scroll-section
+            data-module-slider
+          >
             <div class="c-slider-info">
               <div class="o-container">
                 <div class="c-slider-info__inner">
@@ -473,7 +510,7 @@
                       class="c-slider-info__layout-item o-layout__item u-1/1 u-1/2@medium"
                     >
                       <div class="c-slider-info__wrapper">
-                        <div class="c-slider-info__main">
+                        <div class="c-slider-info__main owl-carousel">
                           <div class="c-slider-info__item">
                             <div
                               class="c-slider-info__gallery o-reveal"
@@ -491,7 +528,30 @@
                                   class="o-background__image-full"
                                   data-scroll
                                   data-scroll-call="toggleLazy, Scroll, main"
-                                  data-scroll-lazy="assets/images/home/slider/1.jpg"
+                                  data-scroll-lazy="assets/images/home/slider/2.jpg"
+                                ></div>
+                              </div>
+                              <div class="o-reveal__background-reveal"></div>
+                            </div>
+                          </div>
+                          <div class="c-slider-info__item">
+                            <div
+                              class="c-slider-info__gallery o-reveal"
+                              data-scroll
+                              data-scroll-class="is-reveal"
+                              data-scroll-offset="50"
+                            >
+                              <div
+                                class="o-background"
+                                data-scroll
+                                data-scroll-speed="-1"
+                                data-scroll-position="middle"
+                              >
+                                <div
+                                  class="o-background__image-full"
+                                  data-scroll
+                                  data-scroll-call="toggleLazy, Scroll, main"
+                                  data-scroll-lazy="assets/images/home/slider/2.jpg"
                                 ></div>
                               </div>
                               <div class="o-reveal__background-reveal"></div>
@@ -576,7 +636,11 @@
             </div>
           </section>
 
-          <section data-component="testimonials" data-scroll-section>
+          <section
+            data-component="testimonials"
+            data-scroll-section
+            data-module-testi
+          >
             <div class="c-testimonial">
               <div class="o-container">
                 <div class="c-testimonial__header">
@@ -592,9 +656,36 @@
                 </div>
 
                 <div class="c-testimonial__wrapper">
-                  <div class="c-testimonial__slider">
+                  <div class="c-testimonial__slider owl-carousel">
                     <div class="c-testimonial__slider-item">
-                      <div class="c-testimonial__slider-image"></div>
+                      <div
+                        class="c-testimonial__slider-image"
+                        data-scroll
+                        data-scroll-call="toggleLazy, Scroll, main"
+                        data-scroll-lazy="assets/images/home/testi/1.jpg"
+                      ></div>
+                      <div class="c-testimonial__slider-content -dark">
+                        <p class="l-layout__content-text">
+                          Lorem ipsum dolor, sit amet consectetur adipisicing
+                          elit. Itaque quo nam dolore saepe modi, facere
+                          officia, distinctio nostrum architecto ipsa, atque cum
+                          minus nesciunt illo delectus dolor cumque voluptates
+                          assumenda.
+                        </p>
+                        <span
+                          class="c-testimonial__slider-author l-layout__content-text"
+                        >
+                          - John Doe
+                        </span>
+                      </div>
+                    </div>
+                    <div class="c-testimonial__slider-item">
+                      <div
+                        class="c-testimonial__slider-image"
+                        data-scroll
+                        data-scroll-call="toggleLazy, Scroll, main"
+                        data-scroll-lazy="assets/images/home/testi/1.jpg"
+                      ></div>
                       <div class="c-testimonial__slider-content -dark">
                         <p class="l-layout__content-text">
                           Lorem ipsum dolor, sit amet consectetur adipisicing
@@ -646,7 +737,7 @@
             </div>
           </section>
 
-          <section data-component="Joblist" data-scroll-section>
+          <section data-component="Joblist" data-scroll-section id="list">
             <div class="c-job">
               <div class="o-container">
                 <div class="l-layout__content">

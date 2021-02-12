@@ -56,6 +56,7 @@
     "modujs": "*",
     "modularload": "*",
     "normalize.css": "*",
+    "owl.carousel": "^2.3.4",
     "regenerator-runtime": "^0.13.3",
     "svg4everybody": "*"
   }

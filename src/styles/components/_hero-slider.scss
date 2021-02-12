@@ -5,11 +5,19 @@
 
   &__main {
     position: relative;
-    height: rem(250px);
+    // height: rem(250px);
     overflow: hidden;
 
     @media (min-width: $from-small) {
       width: calc(100% - 9rem);
+      // height: rem(500px);
+    }
+  }
+
+  &__gallery {
+    height: rem(250px);
+
+    @media (min-width: $from-small) {
       height: rem(500px);
     }
   }

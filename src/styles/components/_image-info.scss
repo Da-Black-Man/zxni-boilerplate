@@ -67,6 +67,9 @@
 
     @media (min-width: $from-medium) {
       height: rem(760px);
+      [data-namespace="interior"] & {
+        height: rem(560px);
+      }
     }
   }
 
