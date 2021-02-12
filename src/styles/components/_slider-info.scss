@@ -1,0 +1,113 @@
+.c-slider-info {
+  position: relative;
+  display: block;
+  padding: rem(90px) 0;
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    z-index: -3;
+    margin-top: rem(-200px);
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #f8f8f8;
+  }
+
+  &__layout {
+    @media (max-width: $to-medium) {
+      flex-flow: column;
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__main {
+    position: relative;
+    overflow: hidden;
+    width: calc(100% + 14vw);
+    left: -7vw;
+    height: 15rem;
+    z-index: 999;
+    @media (min-width: $from-tiny) {
+      width: calc(100% + 20vw);
+      left: -10vw;
+    }
+
+    @media (min-width: $from-small) {
+      width: calc(100% + 18rem);
+      left: -9rem;
+      height: rem(360px);
+    }
+    @media (min-width: $from-medium) {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    padding: rem(100px) 0;
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      background-color: $bg;
+      width: calc(100% + 14vw);
+      left: -7vw;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      @media (min-width: $from-tiny) {
+        left: -10vw;
+        width: calc(100% + 20vw);
+      }
+      @media (min-width: $from-small) {
+        width: calc(100% + 18rem);
+        left: -9rem;
+      }
+      @media (min-width: $from-medium) {
+        width: calc(100% + 27rem);
+        left: -13.5rem;
+      }
+    }
+  }
+
+  &__arrow {
+    display: block;
+    @media (min-width: $from-small) {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 999;
+    }
+
+    .slider-arrow-wrap {
+      width: calc(100% + 14vw);
+      position: relative;
+      left: -7vw;
+      @media (min-width: $from-tiny) {
+        width: calc(100% + 20vw);
+        position: relative;
+        left: -10vw;
+      }
+      @media (min-width: $from-small) {
+        width: auto;
+        left: 9rem;
+      }
+      @media (min-width: $from-medium) {
+        left: -9rem;
+      }
+    }
+    .slider-arrow {
+      @media (max-width: $to-small) {
+        width: 50%;
+      }
+    }
+  }
+}

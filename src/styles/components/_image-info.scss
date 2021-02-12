@@ -30,8 +30,9 @@
   &__background {
     position: relative;
     overflow: hidden;
-    right: -7vw;
-    width: 100%;
+    right: 7vw;
+    width: calc(100% + 14vw);
+
     height: 15rem;
 
     .-flipped & {
@@ -52,7 +53,8 @@
       .-flipped & {
         left: -10vw;
       }
-      right: -10vw;
+      right: 10vw;
+      width: calc(100% + 20vw);
     }
 
     @media (min-width: $from-small) {
