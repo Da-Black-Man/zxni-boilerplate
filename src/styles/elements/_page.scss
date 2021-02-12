@@ -18,10 +18,10 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  &:not(.has-scroll-init) {
-    cursor: wait;
-    overflow: hidden;
-  }
+  // &:not(.has-scroll-init) {
+  //   cursor: wait;
+  //   overflow: hidden;
+  // }
 
   &.has-scroll-smooth {
     overflow: hidden;
