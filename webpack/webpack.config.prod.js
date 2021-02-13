@@ -6,12 +6,13 @@ const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   mode: 'production',
-  //devtool: 'source-map',
+  devtool: false,
+  // devtool: 'source-map',
   stats: 'errors-only',
   bail: true,
   output: {
-    filename: 'assets/scripts/[name].js',
-    chunkFilename: 'assets/scripts/vendor.js'
+    filename: 'assets/scripts/[name].bundle.js',
+    chunkFilename: 'assets/scripts/[name].chunk.js'
   },
   plugins: [
     new Webpack.DefinePlugin({
@@ -19,13 +20,15 @@ module.exports = merge(common, {
     }),
     new Webpack.optimize.ModuleConcatenationPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'assets/css/bundle.css'
+      filename: 'assets/css/[name].bundle.css',
+      chunkFilename: 'assets/css/[name].chunk.css'
+
     })
   ],
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader'
       },
@@ -34,6 +37,16 @@ module.exports = merge(common, {
         use : [
           MiniCssExtractPlugin.loader,
           { loader: 'css-loader', options: { url: false, sourceMap: true } },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [
+                  require('autoprefixer')
+                ];
+              }
+            }
+          },
           { loader: 'sass-loader', options: { sourceMap: true } }
         ]
       }

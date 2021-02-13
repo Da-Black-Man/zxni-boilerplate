@@ -1,0 +1,71 @@
+.c-testimonial {
+  &__header {
+    margin-bottom: rem(60px);
+  }
+  &__wrapper {
+    position: relative;
+    width: calc(100% + 14vw);
+    left: -7vw;
+    @media (min-width: $from-tiny) {
+      width: calc(100% + 20vw);
+      left: -10vw;
+    }
+    @media (min-width: $from-small) {
+      width: calc(100% + 18rem);
+      left: -9rem;
+    }
+    @media (min-width: $from-medium) {
+      width: 100%;
+      left: auto;
+    }
+  }
+  &__slider {
+    background-color: $bg;
+    &-author {
+      font-weight: bold;
+    }
+
+    &-item {
+      @media (min-width: $from-medium) {
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    &-image {
+      @media (min-width: $from-medium) {
+        height: auto;
+        width: 30%;
+      }
+      height: rem(300px);
+      position: relative;
+      background-position: 0 0;
+      background-size: cover;
+      background-color: red;
+    }
+    &-content {
+      @media (min-width: $from-medium) {
+        width: 70%;
+      }
+      padding: rem(60px) rem(90px) rem(120px) rem(90px);
+      position: relative;
+
+      &::before {
+        content: '"';
+        color: $accent;
+        font-weight: bold;
+        font-size: rem(48px);
+        display: block;
+        position: relative;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
+  &__arrow {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+}

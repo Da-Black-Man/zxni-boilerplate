@@ -1,63 +1,56 @@
-html.has-smooth-scroll {
-    overflow: hidden;
-}
+.o-scroll {
+  box-sizing: border-box;
+  overflow: hidden;
+  width: 100vw;
 
-.o-scroll{
-    html.has-smooth-scroll & {
-        height: 100vh;
-        position: relative;
-        overflow: hidden;
-    }
-}
-
-.scroll-content {
-    transform: translate3d(0,0,0);
-    margin: 0;
-    overflow: visible;
-    height: 100%;
-}
-
-// Scrollbar
-// ==========================================================================
-[data-scrollbar],[scrollbar],scrollbar{display:block;position:relative}[data-scrollbar] .scroll-content,[scrollbar] .scroll-content,scrollbar .scroll-content{-webkit-transform:translateZ(0);transform:translateZ(0);will-change:transform}[data-scrollbar].sticky .scrollbar-track,[scrollbar].sticky .scrollbar-track,scrollbar.sticky .scrollbar-track{background:hsla(0,0%,87%,.75)}[data-scrollbar] .scrollbar-track,[scrollbar] .scrollbar-track,scrollbar .scrollbar-track{position:absolute;opacity:0;z-index:1;-webkit-transition:opacity .5s ease-out,background .5s ease-out;transition:opacity .5s ease-out,background .5s ease-out;background:none}[data-scrollbar] .scrollbar-track.show,[data-scrollbar] .scrollbar-track:hover,[scrollbar] .scrollbar-track.show,[scrollbar] .scrollbar-track:hover,scrollbar .scrollbar-track.show,scrollbar .scrollbar-track:hover{opacity:1}[data-scrollbar] .scrollbar-track:hover,[scrollbar] .scrollbar-track:hover,scrollbar .scrollbar-track:hover{background:hsla(0,0%,87%,.75)}[data-scrollbar] .scrollbar-track-x,[scrollbar] .scrollbar-track-x,scrollbar .scrollbar-track-x{bottom:0;left:0;width:100%;height:8px}[data-scrollbar] .scrollbar-track-y,[scrollbar] .scrollbar-track-y,scrollbar .scrollbar-track-y{top:0;right:0;width:8px;height:100%}[data-scrollbar] .scrollbar-thumb,[scrollbar] .scrollbar-thumb,scrollbar .scrollbar-thumb{position:absolute;top:0;left:0;width:8px;height:8px;background:rgba(0,0,0,.5);border-radius:4px}[data-scrollbar] .overscroll-glow,[scrollbar] .overscroll-glow,scrollbar .overscroll-glow{position:absolute;top:0;left:0;width:100%;height:100%}
-
-.scrollbar-track {
-    user-select: none;
-    background-color: transparent !important;
-    width: 14px !important;
-    opacity: 0 !important;
-    z-index: 99999 !important;
-
-    .scrolling & {
-        opacity: 0.75 !important;
-    }
-
-    &:hover {
-        opacity: 1 !important;
-        background-color: #fafafa !important;
-    }
-}
-
-.scrollbar-thumb {
+  .has-scroll-smooth & {
     position: relative;
-    width: 14px !important;
-    background-color: transparent !important;
+    min-height: 100vh;
+  }
+}
 
-    &::after {
-        content: "";
-        position: absolute;
-        top: 3px;
-        right: 3px;
-        bottom: 3px;
-        left: 3px;
-        background-color: #c1c1c1;
-        border-radius: 4px;
-        transition: background-color $speed $easing;
-    }
+.c-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+  height: 100vh;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s $Power1EaseInOut;
+  opacity: 0;
 
-    &:hover {
-        &::after {
-            background-color: #7d7d7d;
-        }
+  &:hover {
+    transform: scaleX(1.45);
+  }
+
+  &:hover,
+  .has-scroll-scrolling &,
+  .has-scroll-dragging & {
+    opacity: 1;
+  }
+
+  &_thumb {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.5;
+    width: 7px;
+    border-radius: 10px;
+    margin: 2px;
+    cursor: grab;
+
+    .has-scroll-dragging & {
+      cursor: grabbing;
     }
+  }
+}
+
+.progress {
+  background: linear-gradient(to right, $accent var(--scroll), transparent 0);
+  background-repeat: no-repeat;
+  position: fixed;
+  width: 100%;
+  height: 4px;
+  z-index: 999999;
 }

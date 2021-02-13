@@ -1,6 +1,6 @@
 import { isFunction } from './is';
 import { arrayContains, findByKeyValue, removeFromArray } from './array';
-import { $document, $window, $html, $body } from './environment';
+import { body } from './environment';
 
 const CALLBACKS = {
     hidden: [],
@@ -22,13 +22,14 @@ const PREFIX = 'v-';
 let UUID = 0;
 
 // Main event
-$document.on('visibilitychange', function(event) {
-    if (document.hidden) {
+document.addEventListener("visibilitychange", function() {
+  if (document.hidden) {
         onDocumentChange('hidden');
     } else {
         onDocumentChange('visible');
     }
 });
+
 
 /**
  * Add a callback

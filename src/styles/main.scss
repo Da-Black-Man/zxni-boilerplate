@@ -14,43 +14,67 @@
 @import "tools/mixins";
 @import "tools/fonts";
 @import "tools/layout";
-// @import "tools/ratio";
-// @import "tools/widths";
-// @import "tools/familly";
+@import "tools/widths";
+@import "tools/family";
 
 // Generic
 // ==========================================================================
-// @import "generic/normalize"; Normalize V5
+//@import "generic/normalize";
 @import "generic/generic";
 @import "generic/media";
 @import "generic/form";
 @import "generic/button";
+@import "generic/layout";
 
-// Base
+// Elements
 // ==========================================================================
-@import "base/fonts";
-@import "base/page";
-@import "base/headings";
+@import "elements/fonts";
+@import "elements/page";
+@import "elements/headings";
 
 // Objects
 // ==========================================================================
-@import "objects/container";
-// @import "objects/crop";
-// @import "objects/ratio";
-// @import "objects/table";
-@import "objects/layout";
-@import "objects/form";
-@import "objects/button";
-@import "objects/pjax";
+@import "objects/loader";
 @import "objects/scroll";
+@import "objects/cursor";
+@import "objects/container";
+@import "objects/ratio";
+@import "objects/layout";
+@import "objects/button";
+@import "objects/background";
+@import "objects/reveal";
+@import "objects/image";
+@import "objects/title";
+@import "objects/line";
+
+// @import "objects/form";
+// @import "objects/grid";
+// @import "objects/crop";
+// @import "objects/table";
 
 // Vendors
 // ==========================================================================
-// @import "vendors/vendor";
+@import "vendors/owl.carousel";
+@import "vendors/owl.theme";
+@import "vendors/modal";
 
 // Components
 // ==========================================================================
-// @import "components/component";
+@import "components/header-navigation";
+@import "components/mega-menu";
+@import "components/main-hero";
+@import "components/hero-slider";
+@import "components/arrow";
+@import "components/banner";
+@import "components/image-info";
+@import "components/job-cards";
+@import "components/slider-info";
+@import "components/testimonial";
+@import "components/job";
+@import "components/brief";
+@import "components/accordion";
+
+@import "components/footer";
 
 // Templates
 // ==========================================================================
@@ -58,10 +82,11 @@
 
 // Utilities
 // ==========================================================================
-// @import "utilities/align";
+@import "utilities/ratio";
+@import "utilities/widths";
+@import "utilities/align";
+@import "utilities/anime";
 // @import "utilities/helpers";
-// @import "utilities/states";
-// @import "utilities/headings";
+@import "utilities/states";
 // @import "utilities/spacing";
-// @import "utilities/widths";
 // @import "utilities/print";

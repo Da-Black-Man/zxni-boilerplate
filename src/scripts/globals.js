@@ -1,10 +1,7 @@
-import TransitionManager from './transitions/TransitionManager';
 import svg4everybody from 'svg4everybody';
+import { isIE } from './utils/is';
 
-export default function(firstBlood) {
+export default function() {
+    isIE();
     svg4everybody();
-
-    if (firstBlood) {
-        const transitionManager = new TransitionManager();
-    }
 }

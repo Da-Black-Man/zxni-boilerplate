@@ -1,0 +1,217 @@
+.c-accordion {
+  padding: rem(90px) 0;
+  display: block;
+  position: relative;
+
+  .-single {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.c-faq {
+  // padding: rem(150px) 0;
+  z-index: 1;
+  position: relative;
+
+  &__background {
+    position: relative;
+    overflow: hidden;
+    right: -7vw;
+    width: 100%;
+    height: 15rem;
+
+    @media (max-width: $to-medium) {
+      display: none;
+    }
+
+    @media (min-width: $from-tiny) {
+      right: -10vw;
+    }
+
+    @media (min-width: $from-small) {
+      right: -9rem;
+      height: 28rem;
+    }
+
+    @media (min-width: $from-medium) {
+      height: 30rem;
+      right: -6rem;
+      width: calc(100% + 3rem);
+    }
+  }
+}
+
+.c-faq-min {
+  &__content {
+    position: relative;
+    padding: rem(150px) rem(30px);
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      left: -9rem;
+      top: 0;
+      width: calc(100% + 18rem);
+      height: 100%;
+      background-color: $accent;
+      z-index: -1;
+    }
+  }
+  &__item {
+    position: relative;
+    width: 100%;
+    border-top: 1px solid #e7eae9;
+    padding-top: 3.61111rem;
+    padding-bottom: 3.61111rem;
+    @include first-child() {
+      border-top: none;
+    }
+
+    @media (max-width: $to-medium) {
+      border-top: none;
+      border-bottom: 1px solid #e7eae9;
+    }
+
+    &_click__JS {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__title {
+    .is-active & {
+      color: $accent;
+    }
+
+    .-single & {
+      @media (min-width: $from-small) {
+        width: 90%;
+      }
+    }
+    width: 75%;
+    @media (min-width: $from-medium) {
+      font-size: 20px;
+    }
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0s;
+
+    span {
+      display: inline-block;
+      color: #fff;
+      font-size: 1.4rem;
+      margin-right: 1rem;
+    }
+  }
+
+  &__btn {
+    position: relative;
+    // top: 2.22222rem;
+    // right: 0;
+    width: 2.88889rem;
+    height: 2.88889rem;
+    background: $bg;
+    border-radius: 50%;
+    cursor: pointer;
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto;
+      width: 0.66667rem;
+      height: 0.44444rem;
+      -webkit-transform: rotate(-90deg);
+      transform: rotate(-90deg);
+      stroke: #fff;
+      -webkit-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s;
+    }
+  }
+}
+
+.c-faq-min__item.is-active .c-faq-min__btn:after {
+  opacity: 1;
+  -webkit-transform: scale(1.1) translate3d(0, 0, 0);
+  transform: scale(1.1) translate3d(0, 0, 0);
+}
+
+.c-faq-min__item.is-active .c-faq-min__btn svg {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  stroke: #fff;
+}
+
+html:not(.is-mobile) .c-faq-min__btn:hover:after {
+  opacity: 1;
+  -webkit-transform: scale(1.1) translate3d(0, 0, 0);
+  transform: scale(1.1) translate3d(0, 0, 0);
+}
+
+html:not(.is-mobile) .c-faq-min__btn:hover svg {
+  stroke: #fff;
+}
+
+html:not(.is-mobile) .c-faq-min__btn:hover span {
+  color: #fff;
+}
+
+.c-faq-min__btn:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #fff;
+  background: $accent;
+  border-radius: 50%;
+  -webkit-transform: scale(0.5) translate3d(0, 0, 0);
+  transform: scale(0.5) translate3d(0, 0, 0);
+  opacity: 0;
+  -webkit-transition: all 0.45s cubic-bezier(0.6, 0.01, 0, 1.38) 0s;
+  transition: all 0.45s cubic-bezier(0.6, 0.01, 0, 1.38) 0s;
+}
+
+.c-footnote.is-active .c-faq-min__btn:after {
+  opacity: 1;
+  -webkit-transform: scale(1.1) translate3d(0, 0, 0);
+  transform: scale(1.1) translate3d(0, 0, 0);
+}
+
+.c-faq-min__item.is-active .c-faq-min__btn:after {
+  opacity: 1;
+  -webkit-transform: scale(1.1) translate3d(0, 0, 0);
+  transform: scale(1.1) translate3d(0, 0, 0);
+}
+
+.c-faq-min__bottom {
+  height: 0;
+  overflow: hidden;
+}
+
+.c-faq-min__bottom-ov {
+  width: 77%;
+  padding-top: 3.77778rem;
+}
+
+html:not(.is-mobile) .c-faq-min__btn:hover svg {
+  stroke: #fff;
+  z-index: 1;
+}
+
+.c-faq-min__item.is-active .c-faq-min__btn svg {
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+  stroke: #fff;
+  z-index: 1;
+}

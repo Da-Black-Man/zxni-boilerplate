@@ -7,27 +7,41 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'cheap-eval-source-map',
   output: {
-    chunkFilename: 'scripts/vendor.js'
+    chunkFilename: 'scripts/[name].[chunkhash:8].chunk.js'
   },
   module: {
     rules: [{
-        test: /\.(js)$/,
+        test: /\.js$/,
         include: Path.resolve(__dirname, '../src'),
         enforce: 'pre',
         loader: 'eslint-loader',
         options: {
           emitWarning: true,
-          // fix: true,
+          fix: true,
         }
       },
       {
-        test: /\.(js)$/,
+        test: /\.js$/,
         include: Path.resolve(__dirname, '../src'),
         loader: 'babel-loader'
       },
       {
         test: /\.scss$/i,
-        use: ['style-loader', 'css-loader?url=false', 'sass-loader?sourcMap']
+        use: [
+          'style-loader',
+          'css-loader?url=false',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: function () {
+                return [
+                  require('autoprefixer')
+                ];
+              }
+            }
+          },
+          'sass-loader?sourceMap'
+        ]
       },
       {
         test: /\.css$/,
@@ -68,5 +82,5 @@ module.exports = merge(common, {
           server.sockWrite(server.sockets, "content-changed");
         });
     }
-  },
+  }
 });

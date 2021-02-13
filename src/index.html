@@ -1,53 +1,773 @@
-<!doctype html>
-<!--[if lte IE 9]>     <html lang="fr" class="has-no-js ie9"> <![endif]-->
-<!--[if gt IE 9]><!-->
-<html lang="en" class="has-no-js" data-debug="true">
-  <!--<![endif]-->
-
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#f2f2f2">
-    <title>Home | Boilerplate </title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f2f2f2" />
+    <title>Home | Boilerplate</title>
 
-    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" href="assets/images/favicon.png">
-
+    <link
+      rel="apple-touch-icon"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link rel="icon" href="assets/images/favicons/favicon.png" />
   </head>
 
   <body>
+    <!-- Header -->
+    <!------------>
+    ${require('./views/template/header.html')}
 
-    <header>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="page.html" data-transition="CustomTransition">Page</a>
-        </li>
-        <li>
-          <a href="page.html" class="no-transition">No transition link</a>
-        </li>
-      </ul>
-    </header>
+    <!-- Main -->
+    <!---------->
+    <main
+      id="main"
+      data-module-load
+      data-load-container
+      data-namespace="home"
+      data-page="overview"
+    >
+      <!-- Content -->
+      <!------------->
+      <div class="o-wrap">
+        <div class="o-scroll" data-module-scroll="main">
+          <section data-component="main-hero" data-scroll-section>
+            <div class="c-main-hero">
+              <div class="c-main-hero__inner">
+                <div class="c-main-hero__background">
+                  <div class="c-main-hero__background-wrap">
+                    <div
+                      class="o-background"
+                      data-scroll
+                      data-scroll-speed="-1"
+                      data-load-style="background-image: url('assets/images/grid.svg')"
+                    ></div>
+                    <div class="c-main-hero__overlay" />
+                  </div>
+                </div>
+                <div class="c-main-hero__container o-container">
+                  <div class="c-main-hero__layout o-layout -flex -middle">
+                    <div
+                      class="c-main-hero__layout-item o-layout__item u-3/4@medium"
+                    >
+                      <div
+                        class="c-main-hero__content"
+                        data-scroll
+                        data-scroll-speed="2"
+                      >
+                        <h1 class="c-main-hero__title">
+                          <span class="c-main-hero__title-inner">
+                            The Complete Logistics Company Careers<span
+                              class="-period"
+                              >.</span
+                            >
+                            <span class="c-main-hero__title-bg" />
+                          </span>
+                        </h1>
+                        <div class="c-main-hero__subtitle">
+                          <div class="c-main-hero__subtitle-content">
+                            <p class="c-main-hero__subtitle-message">
+                              A family-owned business since 1988!
+                            </p>
+                            <a
+                              class="o-button"
+                              data-scroll
+                              data-scroll-to
+                              href="#list"
+                            >
+                              <span class="o-button__inner">
+                                <span class="o-button__label"
+                                  >Search Jobs Now</span
+                                >
+                                <span class="o-button__icon">
+                                  <svg>
+                                    <use xlink:href="#svg-btn-arrow"></use>
+                                  </svg>
+                                </span>
+                              </span>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="__scroll u-anime -delay-4">
+                  <a
+                    class="scroll-wrap"
+                    data-scroll
+                    data-scroll-to
+                    href="#intro"
+                  >
+                    <div class="scroll-text">Scroll to explore.</div>
+                    <div class="scroll-arrow">
+                      <svg>
+                        <use xlink:href="#svg-arrow-long"></use>
+                      </svg>
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="c-main-hero__social u-anime -delay-4"
+                  data-module-social
+                >
+                  <ul class="c-main-hero__social-list">
+                    <li class="c-main-hero__social-item">
+                      <a
+                        class="c-main-hero__social-link --linkedin"
+                        href="/"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <svg class="c-main-hero__social-icon" role="img">
+                          <use xlink:href="#svg-linkedin"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li class="c-main-hero__social-item">
+                      <a
+                        class="c-main-hero__social-link --twitter"
+                        href="/"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <svg class="c-main-hero__social-icon" role="img">
+                          <use xlink:href="#svg-twitter"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li class="c-main-hero__social-item">
+                      <a
+                        class="c-main-hero__social-link --facebook"
+                        href="/"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <svg class="c-main-hero__social-icon" role="img">
+                          <use xlink:href="#svg-facebook"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li class="c-main-hero__social-item">
+                      <a
+                        class="c-main-hero__social-link --youtube"
+                        href=""
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <svg class="c-main-hero__social-icon" role="img">
+                          <use xlink:href="#svg-youtube"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li class="c-main-hero__social-item">
+                      <a
+                        class="c-main-hero__social-link --instagram"
+                        href="/"
+                        rel="noopener noreferrer"
+                        target="_blank"
+                      >
+                        <svg class="c-main-hero__social-icon" role="img">
+                          <use xlink:href="#svg-instagram"></use>
+                        </svg>
+                      </a>
+                    </li>
+                    <li class="c-main-hero__social-item" id="social-hub">
+                      <a
+                        class="c-main-hero__social-link -social-hub"
+                        href="javascript:void(0);"
+                      >
+                        <svg class="c-main-hero__social-icon" role="img">
+                          <use xlink:href="#svg-social-hub"></use>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            data-component="hero-slider"
+            data-scroll-section
+            data-module-heroslider
+          >
+            <div class="c-hero-slider">
+              <div class="c-hero-slider__inner">
+                <div class="c-hero-slider__main owl-carousel">
+                  <div class="c-hero-slider__item">
+                    <div
+                      class="c-hero-slider__gallery o-reveal"
+                      data-scroll
+                      data-scroll-class="is-reveal"
+                      data-scroll-offset="50"
+                    >
+                      <div
+                        class="o-background"
+                        data-scroll
+                        data-scroll-speed="-1"
+                        data-scroll-position="middle"
+                      >
+                        <div
+                          class="o-background__image-full"
+                          data-scroll
+                          data-scroll-call="toggleLazy, Scroll, main"
+                          data-scroll-lazy="assets/images/home/slider/1.jpg"
+                        ></div>
+                      </div>
+                      <div class="o-reveal__background-reveal"></div>
+                    </div>
+                  </div>
+                  <div class="c-hero-slider__item">
+                    <div
+                      class="c-hero-slider__gallery o-reveal"
+                      data-scroll
+                      data-scroll-class="is-reveal"
+                      data-scroll-offset="50"
+                    >
+                      <div
+                        class="o-background"
+                        data-scroll
+                        data-scroll-speed="-1"
+                        data-scroll-position="middle"
+                      >
+                        <div
+                          class="o-background__image-full"
+                          data-scroll
+                          data-scroll-call="toggleLazy, Scroll, main"
+                          data-scroll-lazy="assets/images/home/slider/1.jpg"
+                        ></div>
+                      </div>
+                      <div class="o-reveal__background-reveal"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="c-hero-slider__arrow">
+                  <div class="slider-arrow-wrap slider-arrow-wrap-dark">
+                    <div
+                      class="slider-arrow slider-arrow-l slider-arrow-common"
+                      data-direction="-1"
+                    >
+                      <div class="slider-arrow-svg">
+                        <svg>
+                          <use xlink:href="#svg-slider-arrow-l"></use>
+                        </svg>
+                      </div>
+                      <div class="slider-arrow-line-wrap _oh">
+                        <div class="slider-arrow-line"></div>
+                      </div>
+                    </div>
+                    <div
+                      class="slider-arrow slider-arrow-r slider-arrow-common"
+                      data-direction="1"
+                    >
+                      <div class="slider-arrow-svg">
+                        <svg>
+                          <use xlink:href="#svg-slider-arrow-r"></use>
+                        </svg>
+                      </div>
+                      <div class="slider-arrow-line-wrap _oh">
+                        <div class="slider-arrow-line"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-    <div id="js-pjax-wrapper">
-      <div class="js-pjax-container" data-template="home">
-        <div class="o-scroll" data-module="Scroll">
-          <div data-module="Example">Home page with Example module
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga consectetur dicta libero architecto corrupti doloribus animi quasi! Eveniet ratione impedit nemo, nesciunt architecto harum in rerum dolor ipsum? Explicabo, corporis architecto, dolores esse maxime quaerat nisi, inventore eius modi cum quos sapiente aliquid! Excepturi dolorem dolorum odit voluptatum animi, doloremque ipsa placeat! Aut iste aperiam, cum sequi dolor maiores minima placeat culpa consequuntur cupiditate voluptas nesciunt magnam beatae. Atque esse possimus dolore, voluptas quo quas voluptatum laboriosam facere quidem sapiente debitis nihil commodi quasi ipsa hic aliquam ducimus quaerat veniam nisi! Animi recusandae accusamus reprehenderit commodi repellendus cum fugit ducimus, labore quaerat ab quia suscipit veritatis iste nihil nostrum atque, fugiat quam? Dolores architecto nam velit, illo fugit quos porro ullam assumenda adipisci, eveniet, nesciunt sed perspiciatis eligendi cupiditate accusamus repudiandae recusandae odit dicta earum? Dignissimos nihil iusto fugiat, aliquam omnis voluptate corrupti dicta ipsam aperiam labore ipsum repellat, quibusdam placeat rerum deserunt sunt distinctio molestias enim laboriosam, libero eius cumque amet quae. Eveniet veritatis sint, officiis omnis reprehenderit culpa perspiciatis! Tenetur eveniet alias quos molestiae, quis harum, earum quo deserunt aspernatur dolores atque natus quaerat dolorum excepturi aperiam laudantium. Natus ipsum expedita quos odio molestias incidunt blanditiis reiciendis voluptatibus facilis, nemo, sed earum illo debitis aspernatur magni, laborum officia reprehenderit veritatis neque omnis excepturi deleniti recusandae laudantium! Magni numquam blanditiis aliquid assumenda, error accusamus facere officia ad iure cum dolore perspiciatis nisi, pariatur corrupti ducimus? Atque praesentium, doloremque aperiam iusto vero, officiis libero dicta delectus pariatur saepe deleniti quis illum impedit aspernatur quaerat fuga sit blanditiis odio? Architecto officia dicta ipsa. Provident, quidem eveniet sunt repudiandae reiciendis iste, odit, numquam aliquid delectus illo quis hic! Porro recusandae sequi hic veniam! Nostrum magnam, corrupti inventore voluptatum quibusdam quidem omnis quasi. Fugiat natus iste consequatur deleniti illum molestias autem dolorem animi aliquam quod, dolor odit debitis, odio accusantium? Officiis earum omnis velit vel nam voluptate pariatur, ratione recusandae magnam? Voluptate nulla quae rem minus ut aliquid quis. Molestiae, commodi! Architecto corporis similique sit enim adipisci quod nostrum consequuntur possimus repellat consectetur veritatis tempore, nesciunt officia omnis mollitia dolorum cum quae? Sit, reiciendis tempore doloremque accusantium nihil saepe eum sint accusamus quas placeat sed iusto quidem, repudiandae temporibus laborum cupiditate. Quos, magni. Eligendi aliquid, tempore dolores maiores libero tenetur voluptas quia earum sapiente! Voluptatibus impedit aliquid, nobis, voluptates, commodi optio velit praesentium corrupti consequatur accusamus porro voluptate. Molestias nemo tenetur veniam impedit vel, quis ut, incidunt tempore unde illo dolorum eum sed provident ipsum quam, optio fugiat officiis! Consectetur ab deleniti voluptatibus maiores aliquid cupiditate, quod facere. Iure sunt minus possimus asperiores vitae expedita similique enim repellendus beatae, exercitationem facilis quos placeat voluptatibus rem. Cumque porro omnis adipisci. Ea placeat similique beatae pariatur molestiae provident. Molestias vitae suscipit explicabo perferendis, blanditiis cumque tenetur sed enim qui inventore id provident quisquam harum odio pariatur assumenda maiores, quis deserunt. Voluptates, porro suscipit accusantium delectus nesciunt aperiam quis aspernatur autem officiis, quaerat molestias alias dolore, dolorum tempore modi iure deleniti ab consequatur dolores esse incidunt! Molestiae modi iure voluptates voluptatem odio eveniet debitis expedita? Quaerat placeat sequi, itaque totam est modi voluptatum porro tenetur eos sapiente, deserunt maxime commodi quisquam accusamus, reiciendis molestias. Asperiores accusamus ipsa pariatur repudiandae unde voluptatibus, sequi amet suscipit ipsum deserunt deleniti voluptatem qui nesciunt dolorem quisquam facilis dolores? Dolorem a exercitationem in fugiat ab, impedit asperiores consequatur? Delectus reprehenderit eligendi officiis dolore neque aut suscipit sapiente fugit sit repudiandae perferendis in id totam autem unde laudantium eius explicabo et repellat exercitationem veniam eos, aliquid enim. Magni quae ut nostrum aliquam quam sit laboriosam facilis quisquam ipsam quidem, molestias porro eveniet sed inventore quia odio ipsum accusamus facere sint tenetur. Nesciunt, quae amet! Iste rem rerum magnam earum deserunt a qui obcaecati laudantium maxime optio, ex esse id eveniet impedit adipisci illum veniam, quis iusto consequuntur. Quo eum, quaerat nam sapiente eveniet maiores. Vel dolorem impedit labore alias adipisci ullam consectetur iusto natus itaque, deserunt cum corporis nemo culpa, officia totam eligendi animi doloribus. Itaque adipisci tenetur consequatur perspiciatis excepturi ea maiores libero eum est quos nulla deleniti doloremque, rem ipsam odit ab dolorum praesentium suscipit. Nulla sit laudantium quo distinctio voluptatibus quod, magnam dolores culpa, commodi ex accusamus voluptates corrupti provident repellat consequatur iste? Aliquid voluptates eaque numquam sint itaque. Quam voluptate dolores optio adipisci perferendis ipsum quidem, porro laboriosam consectetur modi vero corrupti nobis ea et perspiciatis corporis, sunt culpa commodi ipsa mollitia saepe a. Aliquid eos voluptate debitis, corrupti voluptas dolorum fuga, sapiente quia quos ad nesciunt, iste provident nostrum hic? Suscipit fuga sunt aliquid laboriosam. Deleniti, maxime quas laudantium atque magni, numquam incidunt a, veritatis repellat voluptates velit doloribus beatae hic rerum minima ipsa pariatur amet molestiae earum fuga. Blanditiis optio sequi similique totam deleniti repellendus architecto minus voluptatem error iusto, dicta qui repellat, fuga natus. Praesentium quas minus vitae dicta similique libero maxime, sit distinctio nam inventore assumenda totam impedit consequuntur harum officiis maiores. Culpa optio minus soluta, ipsa recusandae fuga eum! Earum, pariatur qui est inventore exercitationem labore veniam suscipit libero sed repellendus placeat, alias velit at, dolor praesentium modi ullam facilis eligendi sapiente ea voluptas! Delectus debitis nihil, obcaecati possimus ullam aliquid unde nam, pariatur nesciunt distinctio perspiciatis inventore itaque aliquam, vitae tempora voluptatum ipsam maiores! Enim ipsum nisi ipsam, fugiat nostrum eligendi veniam temporibus, quis pariatur beatae excepturi totam soluta ea repudiandae, dolorem explicabo magni? Blanditiis quidem hic iure fugit, fuga expedita? Tempora!</p>
-          </div>
+          <section data-component="banner" data-scroll-section>
+            <div class="c-banner">
+              <div class="o-container">
+                <div class="o-layout">
+                  <div class="c-banner__content">
+                    <img
+                      src="assets/images/home/banner.png"
+                      alt="The Complete Logistics Company Logo"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-component="image info" data-scroll-section id="intro">
+            <div class="c-image-info -spacer">
+              <div class="o-container">
+                <div class="c-image-info__inner">
+                  <div class="c-image-info__layout o-layout -flex -middle">
+                    <div
+                      class="c-image-info__layout-item o-layout__item u-1/1 u-1/2@medium"
+                    >
+                      <div class="l-layout__content">
+                        <span class="l-layout__content-sub">01.</span>
+                        <h2 class="l-layout__content-title">
+                          Join our team<span class="-period">.</span>
+                        </h2>
+
+                        <p class="l-layout__content-text">
+                          For more than 30 years, we’ve supported clients
+                          ranging from small businesses to Fortune 100 companies
+                          - providing them customized and cutting-edge services.
+                          We are located throughout California, Arizona and
+                          Nevada. At CLC, we are focused on safety, family, and
+                          making a positive difference in our communities. We’re
+                          hiring motivated individuals with a desire to learn
+                          new things and be part of a successful company.
+                          Whether you’re working in the warehouse or behind the
+                          wheel, CLC has opportunities for you. We welcome you
+                          to discover more about what it’s like to work here and
+                          apply today!
+                        </p>
+                      </div>
+                    </div>
+
+                    <div
+                      class="c-image-info__layout-item o-layout__item u-1/1 u-1/2@medium"
+                    >
+                      <div
+                        class="c-image-info__background o-reveal"
+                        data-scroll
+                        data-scroll-class="is-reveal"
+                        data-scroll-offset="0.3"
+                      >
+                        <div
+                          class="o-background"
+                          data-scroll
+                          data-scroll-speed="-1"
+                          data-position="middle"
+                        >
+                          <div
+                            class="o-background__image-full"
+                            data-scroll
+                            data-scroll-call="toggleLazy, Scroll, main"
+                            data-scroll-lazy="assets/images/home/2.jpg"
+                          ></div>
+                        </div>
+
+                        <div class="o-reveal__background-reveal"></div>
+                      </div>
+
+                      <div class="c-image-info__cta">
+                        <div class="c-image-info__cta-content">
+                          <p>
+                            Discover More about what it's like to work here and
+                            apply today!
+                          </p>
+                          <a
+                            class="o-button"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            href="/jobs"
+                          >
+                            <span class="o-button__inner">
+                              <span class="o-button__label"
+                                >Search Jobs Now</span
+                              >
+                              <span class="o-button__icon">
+                                <svg>
+                                  <use xlink:href="#svg-btn-arrow"></use>
+                                </svg>
+                              </span>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-component="our opportunites" data-scroll-section>
+            <div class="c-job-cards">
+              <div class="o-container">
+                <div class="c-job-cards__inner">
+                  <div class="c-job-cards__heading">
+                    <div class="l-layout__content">
+                      <span class="l-layout__content-sub">02.</span>
+                      <h2 class="l-layout__content-title">
+                        Explore our opportunites<span class="-period">.</span>
+                      </h2>
+                    </div>
+                  </div>
+
+                  <div class="c-job-cards__callout">
+                    <div class="c-job-cards__callout-item">
+                      <div class="c-job-cards__callout-image">
+                        <div
+                          class="o-background"
+                          data-scroll
+                          data-scroll-speed="-1"
+                          data-position="middle"
+                          data-scroll-call="toggleLazy, Scroll, main"
+                          data-scroll-lazy="assets/images/home/driver-cta.jpg"
+                        ></div>
+                      </div>
+                      <div class="c-job-cards__callout-content">
+                        <div class="c-job-cards__callout-content-inner">
+                          <h3
+                            class="c-job-cards__callout-content-title o-h3 --blue"
+                          >
+                            Driver Jobs
+                          </h3>
+                          <div class="c-job-cards__callout-content-cta">
+                            <p class="l-layout__content-text">
+                              Discover a truck driver career that fits your
+                              lifestyle with excellent benefits and growth
+                              potential.
+                            </p>
+                            <a
+                              class="c-job-cards__callout-content-cta--link o-button -dark"
+                              href="/driver"
+                            >
+                              <span class="o-button__inner">
+                                <span class="o-button__label">
+                                  Learn More
+                                </span>
+                                <span class="o-button__icon">
+                                  <svg>
+                                    <use xlink:href="#svg-btn-arrow"></use>
+                                  </svg>
+                                </span>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="c-job-cards__callout-content-icon">
+                            <svg>
+                              <use xlink:href="#svg-truck"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="c-job-cards__callout-item">
+                      <div class="c-job-cards__callout-image">
+                        <div
+                          class="o-background"
+                          data-scroll
+                          data-scroll-speed="-1"
+                          data-position="middle"
+                          data-scroll-call="toggleLazy, Scroll, main"
+                          data-scroll-lazy="assets/images/home/warehouse-cta.jpg"
+                        ></div>
+                      </div>
+                      <div class="c-job-cards__callout-content">
+                        <div class="c-job-cards__callout-content-inner">
+                          <h3
+                            class="c-job-cards__callout-content-title o-h3 --pink"
+                          >
+                            Warehouse Jobs
+                          </h3>
+                          <div class="c-job-cards__callout-content-cta">
+                            <p class="l-layout__content-text">
+                              Our warehouse team performs important tasks that
+                              allow us to stay fully committed to our clients.
+                            </p>
+                            <a
+                              class="c-job-cards__callout-content-cta--link o-button -dark"
+                              href="/warehouse"
+                            >
+                              <span class="o-button__inner">
+                                <span class="o-button__label">
+                                  Learn More
+                                </span>
+                                <span class="o-button__icon">
+                                  <svg>
+                                    <use xlink:href="#svg-btn-arrow"></use>
+                                  </svg>
+                                </span>
+                              </span>
+                            </a>
+                          </div>
+                          <div class="c-job-cards__callout-content-icon">
+                            <svg>
+                              <use xlink:href="#svg-warehouse"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            data-component="expect at clc"
+            data-scroll-section
+            data-module-slider
+          >
+            <div class="c-slider-info">
+              <div class="o-container">
+                <div class="c-slider-info__inner">
+                  <div class="c-slider-info__layout o-layout -flex -middle">
+                    <div
+                      class="c-slider-info__layout-item o-layout__item u-1/1 u-1/2@medium"
+                    >
+                      <div class="c-slider-info__wrapper">
+                        <div class="c-slider-info__main owl-carousel">
+                          <div class="c-slider-info__item">
+                            <div
+                              class="c-slider-info__gallery o-reveal"
+                              data-scroll
+                              data-scroll-class="is-reveal"
+                              data-scroll-offset="50"
+                            >
+                              <div
+                                class="o-background"
+                                data-scroll
+                                data-scroll-speed="-1"
+                                data-scroll-position="middle"
+                              >
+                                <div
+                                  class="o-background__image-full"
+                                  data-scroll
+                                  data-scroll-call="toggleLazy, Scroll, main"
+                                  data-scroll-lazy="assets/images/home/slider/2.jpg"
+                                ></div>
+                              </div>
+                              <div class="o-reveal__background-reveal"></div>
+                            </div>
+                          </div>
+                          <div class="c-slider-info__item">
+                            <div
+                              class="c-slider-info__gallery o-reveal"
+                              data-scroll
+                              data-scroll-class="is-reveal"
+                              data-scroll-offset="50"
+                            >
+                              <div
+                                class="o-background"
+                                data-scroll
+                                data-scroll-speed="-1"
+                                data-scroll-position="middle"
+                              >
+                                <div
+                                  class="o-background__image-full"
+                                  data-scroll
+                                  data-scroll-call="toggleLazy, Scroll, main"
+                                  data-scroll-lazy="assets/images/home/slider/2.jpg"
+                                ></div>
+                              </div>
+                              <div class="o-reveal__background-reveal"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="c-slider-info__arrow">
+                          <div class="slider-arrow-wrap slider-arrow-wrap-dark">
+                            <div
+                              class="slider-arrow slider-arrow-l slider-arrow-common"
+                              data-direction="-1"
+                            >
+                              <div class="slider-arrow-svg">
+                                <svg>
+                                  <use xlink:href="#svg-slider-arrow-l"></use>
+                                </svg>
+                              </div>
+                              <div class="slider-arrow-line-wrap _oh">
+                                <div class="slider-arrow-line"></div>
+                              </div>
+                            </div>
+                            <div
+                              class="slider-arrow slider-arrow-r slider-arrow-common"
+                              data-direction="1"
+                            >
+                              <div class="slider-arrow-svg">
+                                <svg>
+                                  <use xlink:href="#svg-slider-arrow-r"></use>
+                                </svg>
+                              </div>
+                              <div class="slider-arrow-line-wrap _oh">
+                                <div class="slider-arrow-line"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div
+                      class="c-slider-info__layout-item o-layout__item u-1/1 u-1/2@medium"
+                    >
+                      <div
+                        class="c-slider-info__content l-layout__content -dark"
+                      >
+                        <span class="l-layout__content-sub">03.</span>
+                        <h2 class="l-layout__content-title">
+                          What you can expect at CLC<span class="-period"
+                            >.</span
+                          >
+                        </h2>
+
+                        <ul class="l-layout__content-list">
+                          <li>Family-Oriented Culture</li>
+                          <li>Safety First</li>
+                          <li>Work Stability</li>
+                          <li>Competitive Benefits</li>
+                          <li>Work and Home Balance</li>
+                        </ul>
+
+                        <p class="l-layout__content-text">
+                          What are you waiting for?
+                        </p>
+                        <a
+                          class="c-job-cards__callout-content-cta--link o-button"
+                          href="/driver"
+                        >
+                          <span class="o-button__inner">
+                            <span class="o-button__label"> Learn More </span>
+                            <span class="o-button__icon">
+                              <svg>
+                                <use xlink:href="#svg-btn-arrow"></use>
+                              </svg>
+                            </span>
+                          </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section
+            data-component="testimonials"
+            data-scroll-section
+            data-module-testi
+          >
+            <div class="c-testimonial">
+              <div class="o-container">
+                <div class="c-testimonial__header">
+                  <div class="l-layout__content -center">
+                    <span class="l-layout__content-sub">04.</span>
+                    <h2 class="l-layout__content-title">
+                      They love working here and you will too<span
+                        class="-period"
+                        >!</span
+                      >
+                    </h2>
+                  </div>
+                </div>
+
+                <div class="c-testimonial__wrapper">
+                  <div class="c-testimonial__slider owl-carousel">
+                    <div class="c-testimonial__slider-item">
+                      <div
+                        class="c-testimonial__slider-image"
+                        data-scroll
+                        data-scroll-call="toggleLazy, Scroll, main"
+                        data-scroll-lazy="assets/images/home/testi/1.jpg"
+                      ></div>
+                      <div class="c-testimonial__slider-content -dark">
+                        <p class="l-layout__content-text">
+                          Lorem ipsum dolor, sit amet consectetur adipisicing
+                          elit. Itaque quo nam dolore saepe modi, facere
+                          officia, distinctio nostrum architecto ipsa, atque cum
+                          minus nesciunt illo delectus dolor cumque voluptates
+                          assumenda.
+                        </p>
+                        <span
+                          class="c-testimonial__slider-author l-layout__content-text"
+                        >
+                          - John Doe
+                        </span>
+                      </div>
+                    </div>
+                    <div class="c-testimonial__slider-item">
+                      <div
+                        class="c-testimonial__slider-image"
+                        data-scroll
+                        data-scroll-call="toggleLazy, Scroll, main"
+                        data-scroll-lazy="assets/images/home/testi/1.jpg"
+                      ></div>
+                      <div class="c-testimonial__slider-content -dark">
+                        <p class="l-layout__content-text">
+                          Lorem ipsum dolor, sit amet consectetur adipisicing
+                          elit. Itaque quo nam dolore saepe modi, facere
+                          officia, distinctio nostrum architecto ipsa, atque cum
+                          minus nesciunt illo delectus dolor cumque voluptates
+                          assumenda.
+                        </p>
+                        <span
+                          class="c-testimonial__slider-author l-layout__content-text"
+                        >
+                          - John Doe
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="c-testimonial__arrow">
+                    <div class="slider-arrow-wrap slider-arrow-wrap-dark">
+                      <div
+                        class="slider-arrow slider-arrow-l slider-arrow-common"
+                        data-direction="-1"
+                      >
+                        <div class="slider-arrow-svg">
+                          <svg>
+                            <use xlink:href="#svg-slider-arrow-l"></use>
+                          </svg>
+                        </div>
+                        <div class="slider-arrow-line-wrap _oh">
+                          <div class="slider-arrow-line"></div>
+                        </div>
+                      </div>
+                      <div
+                        class="slider-arrow slider-arrow-r slider-arrow-common"
+                        data-direction="1"
+                      >
+                        <div class="slider-arrow-svg">
+                          <svg>
+                            <use xlink:href="#svg-slider-arrow-r"></use>
+                          </svg>
+                        </div>
+                        <div class="slider-arrow-line-wrap _oh">
+                          <div class="slider-arrow-line"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section data-component="Joblist" data-scroll-section id="list">
+            <div class="c-job">
+              <div class="o-container">
+                <div class="l-layout__content">
+                  <span class="l-layout__content-sub">05.</span>
+                  <h2 class="l-layout__content-title">
+                    All Jobs<span class="-period">.</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <!------------>
+          ${require('./views/template/footer.html')}
         </div>
       </div>
-    </div>
+    </main>
+
+    <!-- Sprite -->
+    <!------------>
+    ${require('./views/template/sprite.html')}
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-      window.jQuery || document.write('<script src="scripts/vendors/jquery.min.js"><\/script>')
-    </script>
-   
-  </body>
 
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="scripts/vendors/jquery.min.js"><\\/script>'
+        );
+    </script>
+  </body>
 </html>

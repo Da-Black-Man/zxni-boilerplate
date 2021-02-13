@@ -98,10 +98,10 @@
 @function important($flag: false) {
     @if ($flag == true) {
         @return !important;
-    } @elseif ($important == false) {
+    } @else if ($important == false) {
         @return null;
     } @else {
-        @error "`#{$flag}` needs to be `true` or `false`."
+        @error "`#{$flag}` needs to be `true` or `false`.";
     }
 }
 
@@ -111,6 +111,7 @@
 // @requires {String} $context - The global context of the stylesheet.
 // @return   {Boolean} If the $context is set to "editor".
 //
+
 @function is-editor() {
     @return ('editor' == $context);
 }

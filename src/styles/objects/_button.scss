@@ -2,10 +2,62 @@
 // Objects / Buttons
 // ==========================================================================
 .o-button {
-    @include u-hocus {
-        background-color: gray;
+  &.-dark {
+    color: $bg;
+    &:hover {
+      color: $bg;
     }
+  }
+  padding: 0 0 0 rem(25px);
+  margin-top: rem(25px);
+  border-radius: rem(30px);
+  border: 2px solid $border-line;
+  color: #fff;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0, 1),
+    border 0.3s cubic-bezier(0.4, 0, 0, 1),
+    color 0.3s cubic-bezier(0.4, 0, 0, 1);
+  position: relative;
+  &:hover {
+    color: #fff;
 
-    padding: rem(10px);
-    background-color: lightgray;
+    .o-button__icon {
+      background-color: $accent-2;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__label {
+    font-weight: bold;
+    font-size: rem(14px);
+  }
+
+  &__icon {
+    margin: 3px 3px 3px 1rem;
+    background-color: $accent;
+    border-radius: 50%;
+    color: #fff;
+    width: 1.875rem;
+    height: 1.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s cubic-bezier(0.4, 0, 0, 1);
+    svg {
+      width: rem(15px);
+      height: rem(15px);
+    }
+  }
+
+  .deux & {
+    @media (min-width: 420px) {
+      @include first-child() {
+        margin-right: 1rem;
+      }
+    }
+  }
 }
