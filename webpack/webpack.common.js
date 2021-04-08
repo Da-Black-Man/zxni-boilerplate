@@ -66,16 +66,10 @@ module.exports = {
       template: Path.resolve(__dirname, "../src/index.html"),
     }),
     new HtmlWebpackPlugin({
-      title: "Driver | Boilerplate",
-      filename: "driver.html",
+      title: "Home | Boilerplate",
+      filename: "job.html",
       minify: false,
-      template: Path.resolve(__dirname, "../src/driver.html"),
-    }),
-    new HtmlWebpackPlugin({
-      title: "Warehouse | Boilerplate",
-      filename: "warehouse.html",
-      minify: false,
-      template: Path.resolve(__dirname, "../src/warehouse.html"),
+      template: Path.resolve(__dirname, "../src/job.html"),
     }),
   ],
   resolve: {

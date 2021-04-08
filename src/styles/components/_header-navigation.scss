@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 100;
   height: auto;
 
   &__content {
@@ -33,6 +33,7 @@
         bottom: 0;
         background-color: $border-line;
         height: 1px;
+        width: calc(50% - 70px);
       }
     }
 
@@ -47,7 +48,7 @@
       transition: 0.3s all ease-in-out;
 
       border-radius: 0rem 0rem 2rem 2rem;
-      background-color: $bg;
+      background-color: #000;
     }
   }
 
@@ -340,7 +341,7 @@
 
     @media (max-width: $to-tiny) {
       .has-scrolled & {
-        background: $accent;
+        background: $yellow;
         border-radius: 0 0 0 10px;
       }
     }
@@ -460,8 +461,9 @@
   opacity: 0;
   visibility: hidden;
   background-color: rgba(0, 0, 0, 0.85);
-  transition: visibility 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s,
-    background-color 0.6s linear,
-    opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s,
-    transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s;
+  transition:
+  // visibility 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s,
+    background-color 0.3s linear,
+    opacity 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s,
+    transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.3s;
 }

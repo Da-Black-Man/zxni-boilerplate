@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f2f2f2" />
+    <title>Home | Boilerplate</title>
+
+    <link
+      rel="apple-touch-icon"
+      href="assets/images/favicons/apple-touch-icon.png"
+    />
+    <link rel="icon" href="assets/images/favicons/favicon.png" />
+  </head>
+
+  <body class="loading">
+    <!-- Header -->
+    <!------------>
+    ${require('./views/template/header.html')}
+
+    <!-- Main -->
+    <!---------->
+    <main
+      id="main"
+      data-module-load
+      data-load-container
+      data-namespace="home"
+      data-page="overview"
+    >
+      <!-- Content -->
+      <!------------->
+      <div class="o-wrap">
+        <div class="o-scroll" data-module-scroll="main">
+          <section data-component="Joblist" data-scroll-section id="list">
+            <div class="c-job">
+              <div class="o-container">
+                <div class="l-layout__content">
+                  <span class="l-layout__content-sub">05.</span>
+                  <h2 class="l-layout__content-title">
+                    All Jobs<span class="-period">.</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <!------------>
+          ${require('./views/template/footer.html')}
+        </div>
+      </div>
+    </main>
+
+    <!-- Sprite -->
+    <!------------>
+    ${require('./views/template/sprite.html')}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+      window.jQuery ||
+        document.write(
+          '<script src="scripts/vendors/jquery.min.js"><\\/script>'
+        );
+    </script>
+  </body>
+</html>

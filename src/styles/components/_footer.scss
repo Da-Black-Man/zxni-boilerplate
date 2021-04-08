@@ -164,6 +164,7 @@
     span {
       font-size: 0.9375rem;
       font-weight: bold;
+      display: block;
     }
 
     p {
@@ -173,6 +174,9 @@
 
     > div {
       padding: 1.3rem 0;
+      @media (max-width: 999px) {
+        text-align: center;
+      }
     }
   }
 
@@ -187,9 +191,9 @@
     }
 
     &-layout {
-      padding: 0rem;
+      padding: 0 2rem;
 
-      @media (max-width: $to-tiny) {
+      @media (max-width: $to-medium) {
         flex-flow: column;
         padding-bottom: rem(30px);
       }
@@ -203,7 +207,11 @@
 
       .o-layout__item {
         @media (min-width: $from-medium) {
-          width: 50%;
+          &:first-child {
+            width: 30%;
+            margin-right: 3rem;
+          }
+          width: 70%;
         }
       }
     }
@@ -212,7 +220,6 @@
   &__social {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
 
     @media (max-width: $to-medium) {
       padding: 2rem 0;
@@ -230,7 +237,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background-color: #424447;
+      background-color: #000;
       position: relative;
       text-align: center;
       padding: 0.5rem;
@@ -293,6 +300,10 @@
     a {
       color: $accent;
     }
+    p {
+      font-size: 12px;
+      margin: 1rem 0;
+    }
   }
 
   &__copy-right {
@@ -324,7 +335,7 @@
     }
 
     a {
-      color: $accent;
+      color: $yellow;
     }
   }
 

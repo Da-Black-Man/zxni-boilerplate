@@ -13,8 +13,8 @@ import globals from "./globals";
 import { html } from "./utils/environment";
 
 console.log(
-  "%c||||||||||| Z X N I |||||||||||",
-  "font-size:10px;color:#555; background-color:#6bf4a9; padding:5px;border-radius:4px;"
+  "%c||||||||||| Paradox.ai |||||||||||",
+  "font-size:10px;color:#555; background-color:#25c9d0; padding:5px;border-radius:4px;"
 );
 
 class Zxni {

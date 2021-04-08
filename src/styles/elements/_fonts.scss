@@ -3,37 +3,19 @@
 // ==========================================================================
 
 @include font-face(
-  $font-euclid,
-  "fonts/Euclid/EuclidFlex",
-  ("eot", "woff", "ttf")
+  $font-icon,
+  "fonts/custom-icons/custom-icons",
+  ("eot", "woff2", "woff", "ttf")
 ) {
   font-style: normal;
-  font-weight: 400;
-  text-rendering: optimizeLegibility;
+  font-weight: normal;
+  font-display: swap;
 }
 
+///////////////////////////////
 @include font-face(
-  $font-euclid,
-  "fonts/Euclid/EuclidFlexBold",
-  ("eot", "woff", "ttf")
-) {
-  font-style: normal;
-  font-weight: 700;
-  text-rendering: optimizeLegibility;
-}
-
-@include font-face(
-  $font-euclid,
-  "fonts/Euclid/EuclidFlexLight",
-  ("eot", "woff", "ttf")
-) {
-  font-style: normal;
-  font-weight: 300;
-  text-rendering: optimizeLegibility;
-}
-@include font-face(
-  $font-montserrat,
-  "fonts/Montserrat/Montserrat-Bold",
+  $font-speedee,
+  "fonts/Speedee/Speedee-Bold",
   ("eot", "woff", "ttf")
 ) {
   font-style: normal;
@@ -43,19 +25,19 @@
 }
 
 @include font-face(
-  $font-montserrat,
-  "fonts/Montserrat/Montserrat-SemiBold",
+  $font-speedee,
+  "fonts/Speedee/Speedee-BoldItalic",
   ("eot", "woff", "ttf")
 ) {
-  font-style: normal;
-  font-weight: 600;
+  font-style: italic;
+  font-weight: bold;
   text-rendering: optimizeLegibility;
   font-display: swap;
 }
 
 @include font-face(
-  $font-montserrat,
-  "fonts/Montserrat/Montserrat-Regular",
+  $font-speedee,
+  "fonts/Speedee/Speedee-Regular",
   ("eot", "woff", "ttf")
 ) {
   font-style: normal;
@@ -65,11 +47,34 @@
 }
 
 @include font-face(
-  $font-icon,
-  "fonts/custom-icons/custom-icons",
-  ("eot", "woff2", "woff", "ttf")
+  $font-speedee,
+  "fonts/Speedee/Speedee-Light",
+  ("eot", "woff", "ttf")
 ) {
   font-style: normal;
-  font-weight: normal;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  font-display: swap;
+}
+
+@include font-face(
+  $font-speedeeCondensed,
+  "fonts/speedee-condensed/SpeedeeCondensed-Light",
+  ("eot", "woff", "ttf")
+) {
+  font-style: normal;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  font-display: swap;
+}
+
+@include font-face(
+  $font-speedeeCondensed,
+  "fonts/speedee-condensed/SpeedeeCondensed-Bold",
+  ("eot", "woff", "ttf")
+) {
+  font-style: normal;
+  font-weight: bold;
+  text-rendering: optimizeLegibility;
   font-display: swap;
 }
